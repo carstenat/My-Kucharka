@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moja kuchárka</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FBF9F5;
+    --card:#FFFFFF;
+    --ink:#232420;
+    --ink-soft:#6B6D63;
+    --line: rgba(35,36,32,0.09);
+    --shadow-sm: 0 2px 10px rgba(35,36,32,0.05);
+    --shadow-md: 0 12px 30px -12px rgba(35,36,32,0.18);
+    --shadow-lg: 0 30px 60px -20px rgba(35,36,32,0.28);
+
+    --c-main:#3F7A5C;   --c-main-soft:#E7F1EA;   --c-main-deep:#265A3F;
+    --c-a:#D98A3D;       --c-a-soft:#FBEEDD;       --c-a-deep:#A85F19;
+    --c-b:#C9633F;       --c-b-soft:#FBE9E1;       --c-b-deep:#953F22;
+    --c-c:#5B7DB1;       --c-c-soft:#E7EEF9;       --c-c-deep:#33517F;
+    --c-g:#8A6BAE;       --c-g-soft:#F0EAF7;       --c-g-deep:#5C4380;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:'Inter', sans-serif; line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1140px;margin:0 auto;padding:0 28px;}
+
+  /* ---------- header ---------- */
+  header{padding:76px 0 36px;}
+  .eyebrow{
+    font-family:'Space Mono', monospace; font-size:12px; letter-spacing:.12em;
+    text-transform:uppercase; color:var(--c-main-deep); font-weight:700; margin:0 0 16px;
+    display:flex; align-items:center; gap:8px;
+  }
+  .eyebrow::before{content:"🌿"; font-size:13px;}
+  h1{
+    font-family:'Fraunces', serif; font-weight:600; font-size:clamp(42px, 6.4vw, 72px);
+    line-height:1.0; margin:0 0 18px; letter-spacing:-0.02em; color:var(--ink);
+  }
+  h1 em{font-style:italic; font-weight:500; color:var(--c-main-deep);}
+  header p.lede{font-size:18px; max-width:56ch; color:var(--ink-soft); margin:0;}
+
+  /* ---------- controls ---------- */
+  .controls{
+    position:sticky; top:0; z-index:5;
+    background:rgba(251,249,245,0.92); backdrop-filter:blur(10px);
+    padding:22px 0; border-bottom:1px solid var(--line); margin-bottom:44px;
+  }
+  .controls-inner{display:flex; gap:14px; flex-wrap:wrap; align-items:center; justify-content:space-between;}
+  .search-box{position:relative; flex:1 1 280px; min-width:220px;}
+  .search-box input{
+    width:100%; font-family:'Inter', sans-serif; font-size:15px;
+    padding:13px 18px 13px 42px; border-radius:14px; border:1px solid var(--line);
+    background:var(--card); color:var(--ink); outline:none; box-shadow:var(--shadow-sm);
+    transition:box-shadow .2s, border-color .2s;
+  }
+  .search-box input:focus{border-color:var(--c-main); box-shadow:0 0 0 4px var(--c-main-soft);}
+  .search-box svg{position:absolute; left:15px; top:50%; transform:translateY(-50%); opacity:.45;}
+  .search-box input::placeholder{color:var(--ink-soft);}
+
+  .filters{display:flex; gap:8px; flex-wrap:wrap;}
+  .chip{
+    font-family:'Inter', sans-serif; font-size:13.5px; font-weight:600;
+    padding:10px 16px; border-radius:14px; border:1px solid var(--line);
+    background:var(--card); color:var(--ink-soft); cursor:pointer; user-select:none;
+    transition:all .18s; box-shadow:var(--shadow-sm);
+    display:flex; align-items:center; gap:7px;
+  }
+  .chip:hover{transform:translateY(-1px); box-shadow:var(--shadow-md);}
+  .chip .swatch{width:9px;height:9px;border-radius:50%;}
+  .chip[data-cat="main"] .swatch{background:var(--c-main);}
+  .chip[data-cat="a"] .swatch{background:var(--c-a);}
+  .chip[data-cat="b"] .swatch{background:var(--c-b);}
+  .chip[data-cat="c"] .swatch{background:var(--c-c);}
+  .chip[data-cat="g"] .swatch{background:var(--c-g);}
+  .chip.active{background:var(--ink); color:#fff; border-color:var(--ink);}
+  .chip.active .swatch{background:#fff;}
+
+  .count-line{
+    font-family:'Space Mono', monospace; font-size:12px; color:var(--ink-soft); margin-top:16px;
+  }
+
+  /* ---------- grid ---------- */
+  .grid{
+    display:grid; grid-template-columns:repeat(auto-fill, minmax(310px, 1fr));
+    gap:26px; padding-bottom:100px;
+  }
+  .card{
+    background:var(--card); border-radius:22px; cursor:pointer; overflow:hidden;
+    box-shadow:var(--shadow-sm); border:1px solid var(--line);
+    transition:transform .25s cubic-bezier(.2,.8,.2,1), box-shadow .25s;
+    display:flex; flex-direction:column;
+    animation:riseIn .55s cubic-bezier(.2,.8,.2,1) both;
+  }
+  .card:hover{transform:translateY(-6px); box-shadow:var(--shadow-lg);}
+  .card-top{
+    height:126px; display:flex; align-items:flex-end; padding:20px 24px;
+    position:relative; overflow:hidden;
+  }
+  .card-top::after{
+    content:""; position:absolute; inset:0; opacity:.5;
+    background-image:radial-gradient(circle at 85% 20%, rgba(255,255,255,.5), transparent 55%);
+  }
+  .card[data-accent="main"] .card-top{background:linear-gradient(135deg, var(--c-main), var(--c-main-deep));}
+  .card[data-accent="a"] .card-top{background:linear-gradient(135deg, var(--c-a), var(--c-a-deep));}
+  .card[data-accent="b"] .card-top{background:linear-gradient(135deg, var(--c-b), var(--c-b-deep));}
+  .card[data-accent="c"] .card-top{background:linear-gradient(135deg, var(--c-c), var(--c-c-deep));}
+  .card[data-accent="g"] .card-top{background:linear-gradient(135deg, var(--c-g), var(--c-g-deep));}
+  .card-emoji{font-size:40px; filter:drop-shadow(0 4px 10px rgba(0,0,0,0.15)); position:relative; z-index:1;}
+  .card-cat-badge{
+    position:absolute; top:16px; right:18px; font-family:'Space Mono', monospace;
+    font-size:10px; letter-spacing:.07em; text-transform:uppercase; font-weight:700;
+    color:#fff; background:rgba(255,255,255,0.22); padding:5px 10px; border-radius:20px;
+    backdrop-filter:blur(4px);
+  }
+
+  .card-body{padding:22px 24px 24px; display:flex; flex-direction:column; gap:11px; flex:1;}
+  .card h2{font-family:'Fraunces', serif; font-weight:600; font-size:21px; margin:0; line-height:1.2; letter-spacing:-0.01em;}
+  .card .why{font-size:13.5px; color:var(--ink-soft); margin:0; flex:1; line-height:1.5;}
+
+  .card-stats{display:flex; gap:16px; margin-top:4px; padding-top:14px; border-top:1px solid var(--line);}
+  .card-stats .figure{display:flex; flex-direction:column;}
+  .card-stats .num{font-family:'Space Mono', monospace; font-size:15px; font-weight:700;}
+  .card-stats .lbl{font-size:10px; color:var(--ink-soft); margin-top:2px;}
+
+  .card-tags{display:flex; gap:6px; flex-wrap:wrap;}
+  .card-tags span{
+    font-size:11px; font-weight:500; padding:4px 10px; border-radius:20px;
+  }
+  .card[data-accent="main"] .card-tags span{background:var(--c-main-soft); color:var(--c-main-deep);}
+  .card[data-accent="a"] .card-tags span{background:var(--c-a-soft); color:var(--c-a-deep);}
+  .card[data-accent="b"] .card-tags span{background:var(--c-b-soft); color:var(--c-b-deep);}
+  .card[data-accent="c"] .card-tags span{background:var(--c-c-soft); color:var(--c-c-deep);}
+  .card[data-accent="g"] .card-tags span{background:var(--c-g-soft); color:var(--c-g-deep);}
+
+  .empty-state{display:none; text-align:center; padding:90px 20px; color:var(--ink-soft);}
+  .empty-state.show{display:block;}
+  .empty-state .ico{font-size:38px; margin-bottom:14px;}
+  .empty-state h3{font-family:'Fraunces', serif; color:var(--ink); font-size:22px; margin-bottom:8px; font-weight:600;}
+
+  /* ---------- detail overlay ---------- */
+  .overlay{
+    position:fixed; inset:0; background:rgba(35,36,32,0.45); backdrop-filter:blur(3px);
+    display:none; align-items:flex-start; justify-content:center; z-index:50;
+    padding:48px 20px; overflow-y:auto;
+  }
+  .overlay.open{display:flex;}
+  .detail{
+    background:var(--card); max-width:760px; width:100%; border-radius:28px;
+    box-shadow:0 40px 90px -20px rgba(0,0,0,0.4);
+    animation:popIn .3s cubic-bezier(.2,.8,.2,1) both; overflow:hidden;
+  }
+  .detail-top{
+    height:150px; position:relative; display:flex; align-items:flex-end; padding:26px 40px;
+  }
+  .detail[data-accent="main"] .detail-top{background:linear-gradient(135deg, var(--c-main), var(--c-main-deep));}
+  .detail[data-accent="a"] .detail-top{background:linear-gradient(135deg, var(--c-a), var(--c-a-deep));}
+  .detail[data-accent="b"] .detail-top{background:linear-gradient(135deg, var(--c-b), var(--c-b-deep));}
+  .detail[data-accent="c"] .detail-top{background:linear-gradient(135deg, var(--c-c), var(--c-c-deep));}
+  .detail[data-accent="g"] .detail-top{background:linear-gradient(135deg, var(--c-g), var(--c-g-deep));}
+  .detail-emoji{font-size:52px; filter:drop-shadow(0 6px 14px rgba(0,0,0,0.2));}
+  .detail-cat-badge{
+    position:absolute; top:22px; right:24px; font-family:'Space Mono', monospace;
+    font-size:11px; letter-spacing:.07em; text-transform:uppercase; font-weight:700;
+    color:#fff; background:rgba(255,255,255,0.22); padding:6px 12px; border-radius:20px;
+  }
+  .close-btn{
+    position:absolute; top:20px; left:24px; width:36px; height:36px; border-radius:50%;
+    border:none; background:rgba(255,255,255,0.25); backdrop-filter:blur(4px); cursor:pointer;
+    display:flex; align-items:center; justify-content:center; color:#fff; font-size:17px;
+    transition:background .15s;
+  }
+  .close-btn:hover{background:rgba(255,255,255,0.4);}
+
+  .detail-inner{padding:34px 40px 44px;}
+  .detail h2{font-family:'Fraunces', serif; font-weight:600; font-size:30px; margin:0 0 10px; letter-spacing:-0.01em;}
+  .detail .why{color:var(--ink-soft); font-size:15.5px; margin:0 0 22px; line-height:1.6;}
+
+  .readout{display:flex; gap:12px; flex-wrap:wrap; margin-bottom:10px;}
+  .readout .figure{
+    flex:1; min-width:100px; background:var(--bg); border-radius:14px; padding:14px 16px;
+    display:flex; flex-direction:column; border:1px solid var(--line);
+  }
+  .readout .num{font-family:'Space Mono', monospace; font-size:19px; font-weight:700;}
+  .readout .lbl{font-size:11px; color:var(--ink-soft); margin-top:2px;}
+
+  .servings-pill{font-size:13px; color:var(--ink-soft); margin:12px 0 0; font-weight:500;}
+
+  h3.section-h{
+    font-family:'Fraunces', serif; font-size:16px; font-weight:600; margin:30px 0 14px; color:var(--ink);
+  }
+  ul.ingredients{list-style:none; margin:0; padding:0; display:flex; flex-wrap:wrap; gap:9px;}
+  ul.ingredients li{
+    font-size:13.5px; padding:8px 14px; border-radius:20px; background:var(--bg); border:1px solid var(--line);
+  }
+  ol.steps{margin:0; padding:0; list-style:none; counter-reset:step; display:flex; flex-direction:column; gap:13px;}
+  ol.steps li{counter-increment:step; display:flex; gap:14px; font-size:15px; align-items:flex-start;}
+  ol.steps li::before{
+    content:counter(step); font-family:'Space Mono', monospace; font-weight:700; font-size:12.5px;
+    background:var(--ink); color:#fff; width:24px; height:24px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center; flex:none; margin-top:1px;
+  }
+  .note-box{
+    margin-top:26px; background:var(--bg); border-radius:16px; padding:16px 20px;
+    font-size:13.5px; color:var(--ink-soft); display:flex; gap:10px; line-height:1.55;
+  }
+  .note-box .ico{font-size:16px; flex:none;}
+  .note-box b{color:var(--ink);}
+
+  ul.variations{list-style:none; margin:14px 0 0; padding:0; display:flex; flex-direction:column; gap:9px;}
+  ul.variations li{display:flex; gap:10px; font-size:13.5px; color:var(--ink-soft); line-height:1.5; align-items:flex-start;}
+  ul.variations li .ico{font-size:14px; flex:none; margin-top:1px;}
+
+  footer{
+    border-top:1px solid var(--line); padding:44px 0 80px;
+    color:var(--ink-soft); font-size:13.5px; text-align:center;
+  }
+  footer .hi{font-family:'Fraunces', serif; font-style:italic; font-size:15px; color:var(--ink); margin-bottom:4px;}
+
+  @keyframes riseIn{from{opacity:0; transform:translateY(14px);} to{opacity:1; transform:translateY(0);}}
+  @keyframes popIn{from{opacity:0; transform:translateY(18px) scale(.97);} to{opacity:1; transform:translateY(0) scale(1);}}
+
+  @media (max-width:640px){
+    .detail-inner{padding:28px 24px 34px;}
+    .detail-top{padding:22px 24px;}
+    .grid{grid-template-columns:1fr;}
+    header{padding:56px 0 28px;}
+  }
+  @media (prefers-reduced-motion: reduce){*{animation:none !important;}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <p class="eyebrow">Rastlinný nutričný kuchár</p>
+    <h1>Moja <em>kuchárka</em></h1>
+    <p class="lede">Recepty pripravené dopredu, hotové na vytiahnutie z mrazničky.
+    Hľadaj podľa suroviny alebo si prezri podľa kategórie.</p>
+  </header>
+
+  <div class="controls">
+    <div class="controls-inner">
+      <div class="search-box">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input type="text" id="searchInput" placeholder="Hľadaj recept alebo surovinu…">
+      </div>
+      <div class="filters" id="filterBar"></div>
+    </div>
+    <p class="count-line" id="countLine">4 recepty</p>
+  </div>
+
+  <div class="grid" id="grid"></div>
+  <div class="empty-state" id="emptyState">
+    <div class="ico">🔍</div>
+    <h3>Nič sa nenašlo</h3>
+    <p>Skús iné slovo, alebo zruš filter kategórie.</p>
+  </div>
+
+  <footer>
+    <p class="hi">Dobrú chuť!</p>
+    <p>Pridať recept → skopíruj jeden objekt v poli <code>recipes</code> v zdrojovom kóde a uprav.</p>
+  </footer>
+</div>
+
+<div class="overlay" id="overlay">
+  <div class="detail" id="detailBox">
+    <div class="detail-top">
+      <button class="close-btn" id="closeBtn" aria-label="Zavrieť">←</button>
+      <span class="detail-emoji" id="detailEmoji"></span>
+      <span class="detail-cat-badge" id="detailBadge"></span>
+    </div>
+    <div class="detail-inner" id="detailInner"></div>
+  </div>
+</div>
+
+<script>
+const recipes = [
+  {
+    id: "gulas",
+    accent: "main",
+    emoji: "🍲",
+    category: "Hlavné jedlo",
+    title: "Šošovicovo-sójový guláš so sladkým zemiakom a zeleninou",
+    why: "Sója aj šošovica dávajú vysokú bielkovinu, sladký zemiak sýtosť, paprika a paradajky prehĺbia gulášovú chuť, rukola sa pridá na záver ako čerstvý kontrast.",
+    kcal: "400-440", protein: "29-33 g", fiber: "16-18 g",
+    servings: "4 porcie",
+    portionWeight: "450-530 g",
+    portionCup: "~2-2¼ cup",
+    per100g: { kcal: "75-95", protein: "5-7 g", fiber: "3-4 g" },
+    per100gNote: "Rozsah je širší než zvyčajne — vývar sa varením čiastočne odparí, takže presná hmotnosť porcie kolíše viac než pri nátierkach.",
+    tags: ["guláš", "strukoviny", "jednohrncové", "sója"],
+    ingredients: [
+      "150 g suchá červená šošovica","100 g sójové kocky (sušené)",
+      "2 sladké zemiaky (~400 g), kocky 2 cm","2 cibule, nadrobno","3 strúčiky cesnaku",
+      "1 červená paprika, kocky","2 ks čerstvé paradajky, kocky","3 lyžice rajčinového pretlaku",
+      "150 g mrazená zelená fazuľka","500-600 ml zeleninový vývar (alebo bujón)",
+      "mleté čili/paprika, rasca, majoránka, bobkový list","hrsť rukoly (na záver)",
+      "šťava z ½ citróna","petržlenová vňať"
+    ],
+    steps: [
+      "Sójové kocky namoč 15 min do horúcej vody, vytlač, bokom.",
+      "Cibuľu dus na trošku vývaru 5 min, pridaj cesnak, papriku (korenie), rascu (1 min).",
+      "Pridaj čerstvú papriku a pretlak, opeč 3 min, zalej vývarom.",
+      "Pridaj šošovicu, sójové kocky, bobkový list, majoránku — var 15 min.",
+      "Pridaj sladký zemiak a paradajky, var 10 min.",
+      "Pridaj mrazenú fazuľku, var ešte 5 min do mäkka všetkého.",
+      "Odstav, dochuť soľou/octom, primiešaj citrónovú šťavu.",
+      "Rukolu vmiešaj tesne pred podávaním alebo navrch ako topping."
+    ],
+    note: "Vitamín C z papriky, paradajok a citróna pomáha vstrebávaniu železa zo šošovice/sóje napriek fytátom. Vápnik je stále nízky — sezam/tahini navrch pri podávaní by to doplnil.",
+    variations: [
+      "Cícer namiesto sójových kociek — hutnejšia, orieškovejšia textúra, o niečo nižšia bielkovina.",
+      "Zeler namiesto sladkého zemiaka — menej sladké, viac zemité, nižší glykemický náloz.",
+      "Kel namiesto rukoly — výraznejšia, mierne horkastá chuť namiesto jemnej pikantnosti."
+    ]
+  },
+  {
+    id: "fazula",
+    accent: "a",
+    emoji: "🫘",
+    category: "Nátierka",
+    title: "Biela fazuľa & sušené paradajky",
+    why: "Fazuľa dáva krémovú základňu, sušené paradajky umami hĺbku, ocot a nakladaná uhorka pridávajú kyslú, prerážajúcu vrstvu — bez kvapky oleja a bez pridaných kalórií navyše.",
+    kcal: "142", protein: "9 g", fiber: "6 g",
+    servings: "4 porcie",
+    portionWeight: "~146 g",
+    portionCup: "~½-⅔ cup",
+    per100g: { kcal: "97", protein: "6 g", fiber: "4 g" },
+    per100gNote: "Hmotnosť porcie je odhad zo súčtu surovín (viacero položiek v lyžiciach/kusoch).",
+    tags: ["mrazená nátierka", "mediteránska", "fazuľa"],
+    ingredients: [
+      "2× 400 g biela fazuľa, konzerva (scedená)","40 g sušené paradajky (nie v oleji)",
+      "2 strúčiky cesnaku","2 lyžice tahini","1 lyžička jablčného octu",
+      "1 lyžička citrónovej šťavy","1 lyžička nakladanej uhorky, nadrobno (alebo kyslej kapusty)",
+      "1 lyžička údenej papriky","hrsť čerstvej bazalky","soľ, čerstvo mleté čierne korenie"
+    ],
+    steps: [
+      "Sušené paradajky namoč 10 min v horúcej vode, sceď (šťavu si nechaj).",
+      "Fazuľu, paradajky, cesnak, tahini, ocot, citrónovú šťavu, papriku a bazalku rozmixuj dohladka.",
+      "Vmiešaj nasekanú nakladanú uhorku (nemixuj dohladka — nech je cítiť ako kúsky).",
+      "Dochuť soľou a korením — výraznejšie, mrazom sa chuť stlmí.",
+      "Nalej do formičiek, zarovnaj, zamraz aspoň 4 h."
+    ],
+    note: "Fytáty vo fazuli mierne brzdia železo a zinok — citrón to čiastočne kompenzuje.",
+    variations: [
+      "Cícer namiesto bielej fazule — zrnitejšia textúra, orieškovejšia chuť.",
+      "Pečená červená paprika namiesto sušených paradajok — sladšia, dymovejšia, menej kyslá.",
+      "Petržlenová vňať namiesto bazalky — sviežejšia, ostrejšia zelená chuť."
+    ]
+  },
+  {
+    id: "sosovica-miso",
+    accent: "a",
+    emoji: "🍜",
+    category: "Nátierka",
+    title: "Šošovica & miso-zázvor",
+    why: "Biele miso dodá hlbokú slanosť bez soli navyše, zázvor a limetka ju rozžiaria.",
+    kcal: "150", protein: "10 g", fiber: "5 g",
+    servings: "4 porcie",
+    portionWeight: "138-154 g",
+    portionCup: "~½-⅔ cup",
+    per100g: { kcal: "97-109", protein: "6-7 g", fiber: "3-4 g" },
+    per100gNote: "Hmotnosť porcie dopočítaná pomocou yield faktora pre varenú šošovicu (~2,3-2,6×, tabulka-cups-gramy.md kategória H).",
+    tags: ["mrazená nátierka", "ázijská", "miso"],
+    ingredients: [
+      "200 g suchá červená šošovica","500 ml voda","2 lyžice biele miso",
+      "1 lyžička nastrúhaného zázvoru","1 strúčik cesnaku","1 lyžička redukovanej sójovky",
+      "šťava z ½ limetky","2 jarné cibuľky","štipka čili vločiek"
+    ],
+    steps: [
+      "Šošovicu var v neosolenej vode ~12-15 min do rozvarenia, zceď.",
+      "Rozmixuj s misom, zázvorom, cesnakom, sójovkou a limetkou dohladka.",
+      "Vmiešaj jarnú cibuľku, dochuť čili.",
+      "Do formičiek, zamraz."
+    ],
+    note: "Miso aj sójovka sú už slané — nedosoľuj naslepo. Limetka pomáha vstrebávaniu železa.",
+    variations: [
+      "Cícer namiesto šošovice — hutnejšia, menej krémová textúra.",
+      "Tmavé miso namiesto bieleho — výraznejšia, slanšia a viac fermentovaná chuť.",
+      "Citrón namiesto limetky — miernejšia kyslosť, menej aromatická."
+    ]
+  },
+  {
+    id: "tofu-paprika",
+    accent: "a",
+    emoji: "🌶️",
+    category: "Nátierka",
+    title: "Tofu & pečená paprika",
+    why: "Tofu dá hodvábnu textúru a najviac bielkovín, sucho opečená paprika prinesie dymovú hĺbku.",
+    kcal: "130", protein: "11 g", fiber: "3 g",
+    servings: "4 porcie",
+    portionWeight: "~135 g",
+    portionCup: "~½ cup",
+    per100g: { kcal: "96", protein: "8 g", fiber: "2 g" },
+    per100gNote: "Hmotnosť porcie je odhad zo súčtu surovín.",
+    tags: ["mrazená nátierka", "dymová", "tofu"],
+    ingredients: [
+      "300 g tuhé biele tofu","1 väčšia červená paprika","1 lyžica tahini",
+      "1 lyžička redukovanej sójovky","1 strúčik cesnaku","½ lyžičky údenej papriky",
+      "šťava z ½ citróna","soľ podľa chuti"
+    ],
+    steps: [
+      "Papriku opeč nasucho do začernania šupky, oškrab, zbav semienok.",
+      "Tofu prelis cez utierku 10 min, aby pustilo vodu.",
+      "Rozmixuj tofu, papriku, tahini, sójovku, cesnak, papriku, citrón dohladka.",
+      "Dochuť, naplň formičky, zamraz."
+    ],
+    note: "Ak je tofu bez vápnika (typ \"nigari\"), zváž lyžicu maku navyše.",
+    variations: [
+      "Biela fazuľa namiesto tofu — krémovejšia, menej hodvábna textúra, o niečo nižšia bielkovina.",
+      "Pečená mrkva namiesto papriky — sladšia, menej dymová chuť.",
+      "Rímska paprika/čili namiesto údenej papriky — výraznejšia pikantnosť namiesto dymovosti."
+    ]
+  },
+  {
+    id: "pohanka-cokolada",
+    accent: "g",
+    emoji: "🍫",
+    category: "Iné",
+    title: "Pohankovo-datľové tyčinky — čokoládovo-orechové",
+    why: "Naklíčená pohanka dáva chrumkavý kontrast a kompletnú bielkovinu, datle a arašidové maslo spájajú bez pridaného cukru, kakao a soľ dodajú hutnú, takmer fudge chuť.",
+    kcal: "147", protein: "3.5 g", fiber: "3.8 g",
+    per100g: { kcal: "420", protein: "10 g", fat: "19 g", carbs: "48 g", fiber: "11 g" },
+    servings: "8 tyčiniek",
+    storage: "Izbová teplota 5-7 dní / chladnička 2-3 týždne / mraznička 2-3 mesiace",
+    portionWeight: "~35 g",
+    portionCup: "1 tyčinka",
+    tags: ["desiata", "tyčinky", "bez pečenia", "pohanka", "čokoláda"],
+    ingredients: [
+      "100 g (⅔ cup) pohanka bledá bio, naklíčená a sušená",
+      "130 g datľová pasta (čisté datle)",
+      "20 g (2 lyžice) chia semienka",
+      "15 g (1 lyžica) mleté ľanové semienko",
+      "20 g (2 lyžice) sezamové semienka mleté / tahini bez oleja",
+      "60 g (3 lyžice) arašidové maslo (100 % orechy)",
+      "15 g (1½ lyžice) holé kakao, nesladené",
+      "½ lyžičky soľ",
+      "½ lyžičky vanilkový prášok, nesladený"
+    ],
+    steps: [
+      "Pohanku namoč 6-8 h, sceď a nechaj klíčiť v cedníku 12-24 h do drobných klíčkov.",
+      "Rozlož na plech s papierom, suš pri 40-45 °C 3-4 h do chrumkava. Odlož 20-30 % bokom, celé.",
+      "Zvyšok pohanky rozmixuj so sezamom/tahini, soľou, vanilkou a kakaom do hustej pasty.",
+      "Vmiešaj arašidové maslo, potom chia, ľanové semienko a odloženú chrumkavú pohanku ručne.",
+      "Rozotri do vrstvy ~1,5 cm, tvaruj tyčinky.",
+      "Chladničku min. 2 h na stuhnutie, potom krájaj na 8 kusov."
+    ],
+    note: "Fytáty z pohanky sú znížené klíčením. Vápnik dopĺňa sezam/tahini. Uchovávaj v uzavretej nádobe, tyčinky nechaj pred zatvorením úplne vychladnúť (kondenzácia skracuje trvanlivosť).",
+    variations: [
+      "Mandľové maslo namiesto arašidového — jemnejšia chuť, o niečo vyšší vápnik.",
+      "Sušené marhule namiesto časti datľovej pasty — menej sladké, nižší glykemický náloz.",
+      "Škorica navyše — teplejšia, korenistejšia chuť bez zmeny textúry."
+    ]
+  },
+  {
+    id: "pohanka-zazvor-pomaranc",
+    accent: "g",
+    emoji: "🍊",
+    category: "Iné",
+    title: "Pohankovo-datľové tyčinky — zázvorovo-pomarančové",
+    why: "Sviežа, korenistá verzia — pomarančová šťava a zázvor rozžiaria datľovú sladkosť, škorica a klinček dodajú teplo bez toho, aby prevážili nad pohankou.",
+    kcal: "128", protein: "2.8 g", fiber: "3.5 g",
+    per100g: { kcal: "365", protein: "8 g", fat: "13 g", carbs: "46 g", fiber: "10 g" },
+    servings: "8 tyčiniek",
+    storage: "Izbová teplota 5-7 dní / chladnička 2-3 týždne / mraznička 2-3 mesiace",
+    portionWeight: "~35 g",
+    portionCup: "1 tyčinka",
+    tags: ["desiata", "tyčinky", "bez pečenia", "pohanka", "citrusy"],
+    ingredients: [
+      "100 g (⅔ cup) pohanka bledá bio, naklíčená a sušená",
+      "130 g datľová pasta (čisté datle)",
+      "20 g (2 lyžice) chia semienka",
+      "15 g (1 lyžica) mleté ľanové semienko",
+      "20 g (2 lyžice) sezamové semienka mleté / tahini bez oleja",
+      "šťava z 1 pomaranča",
+      "1 lyžička čerstvo nastrúhaný zázvor",
+      "½ lyžičky škorica",
+      "štipka mletý klinček",
+      "¼ lyžičky soľ",
+      "½ lyžičky vanilkový prášok, nesladený"
+    ],
+    steps: [
+      "Pohanku namoč 6-8 h, sceď a nechaj klíčiť v cedníku 12-24 h do drobných klíčkov.",
+      "Rozlož na plech s papierom, suš pri 40-45 °C 3-4 h do chrumkava. Odlož 20-30 % bokom, celé.",
+      "Zvyšok pohanky rozmixuj so sezamom/tahini, soľou, vanilkou, pomarančovou šťavou, zázvorom, škoricou a klinčekom do hustej pasty.",
+      "Vmiešaj chia, ľanové semienko a odloženú chrumkavú pohanku ručne.",
+      "Rozotri do vrstvy ~1,5 cm, tvaruj tyčinky.",
+      "Chladničku min. 2 h na stuhnutie, potom krájaj na 8 kusov."
+    ],
+    note: "Vitamín C z pomaranča zvyšuje vstrebávanie železa z pohanky a ľanu. Kôra citrusov sa nepoužíva (bežné SK/EÚ citrusy môžu mať ošetrený povrch) — pri bio citrusoch sa dá kôra pridať späť.",
+    variations: [
+      "Citrón namiesto pomaranča — kyslejšia, menej sladká, menej aromatická verzia.",
+      "Kardamón namiesto klinčeka — jemnejšia, sviežejšia korenistá nota.",
+      "Sušené marhule navyše — výraznejšia ovocná chuť, o niečo vyšší glykemický náloz."
+    ]
+  },
+  {
+    id: "pohanka-brusnice-mandle",
+    accent: "g",
+    emoji: "🍒",
+    category: "Iné",
+    title: "Pohankovo-datľové tyčinky — brusnicovo-mandľové",
+    why: "Žuvacia, ovocná verzia s kyslými prekvapeniami — mandľové maslo dáva jemnejšiu chuť než arašidové, kúsky brusníc prerážajú sladkosť datlí.",
+    kcal: "138", protein: "2.8 g", fiber: "3.1 g",
+    per100g: { kcal: "395", protein: "8 g", fat: "16 g", carbs: "50 g", fiber: "9 g" },
+    servings: "8 tyčiniek",
+    storage: "Izbová teplota 5-7 dní / chladnička 2-3 týždne / mraznička 2-3 mesiace",
+    portionWeight: "~35 g",
+    portionCup: "1 tyčinka",
+    tags: ["desiata", "tyčinky", "bez pečenia", "pohanka", "brusnice"],
+    ingredients: [
+      "100 g (⅔ cup) pohanka bledá bio, naklíčená a sušená",
+      "130 g datľová pasta (čisté datle)",
+      "20 g (2 lyžice) chia semienka",
+      "15 g (1 lyžica) mleté ľanové semienko",
+      "20 g (2 lyžice) sezamové semienka mleté / tahini bez oleja",
+      "40 g (2 lyžice) mandľové maslo",
+      "30 g sušené brusnice, nesladené, nahrubo nasekané",
+      "šťava z ½ citróna",
+      "¼ lyžičky soľ",
+      "½ lyžičky vanilkový prášok, nesladený"
+    ],
+    steps: [
+      "Pohanku namoč 6-8 h, sceď a nechaj klíčiť v cedníku 12-24 h do drobných klíčkov.",
+      "Rozlož na plech s papierom, suš pri 40-45 °C 3-4 h do chrumkava. Odlož 20-30 % bokom, celé.",
+      "Zvyšok pohanky rozmixuj so sezamom/tahini, soľou, vanilkou, mandľovým maslom a citrónovou šťavou do hustej pasty.",
+      "Vmiešaj chia, ľanové semienko, nasekané brusnice a odloženú chrumkavú pohanku ručne.",
+      "Rozotri do vrstvy ~1,5 cm, tvaruj tyčinky.",
+      "Chladničku min. 2 h na stuhnutie, potom krájaj na 8 kusov."
+    ],
+    note: "Over etiketu sušených brusníc — mnohé sú dosladené, potrebné sú nesladené (hard constraint na pridaný cukor). Kôra citróna sa nepoužíva, viac šťavy kompenzuje arómu.",
+    variations: [
+      "Arašidové maslo namiesto mandľového — výraznejšia, orieškovejšia chuť.",
+      "Sušené marhule namiesto brusníc — menej kyslé, sladšia ovocná nota.",
+      "Pomarančová šťava namiesto citrónovej — sladšia, menej ostrá kyslosť."
+    ]
+  }
+];
+
+const grid = document.getElementById('grid');
+const emptyState = document.getElementById('emptyState');
+const countLine = document.getElementById('countLine');
+const searchInput = document.getElementById('searchInput');
+const filterBar = document.getElementById('filterBar');
+let activeCat = 'all';
+
+function buildFilterBar(){
+  const seen = new Map();
+  recipes.forEach(r=>{
+    if(!seen.has(r.accent)) seen.set(r.accent, r.category);
+  });
+  let html = `<button class="chip active" data-cat="all">✨ Všetko</button>`;
+  seen.forEach((label, accent)=>{
+    html += `<button class="chip" data-cat="${accent}"><span class="swatch"></span>${label}</button>`;
+  });
+  filterBar.innerHTML = html;
+}
+buildFilterBar();
+
+function cardHTML(r){
+  return `<article class="card" data-accent="${r.accent}" data-id="${r.id}">
+    <div class="card-top">
+      <span class="card-emoji">${r.emoji}</span>
+      <span class="card-cat-badge">${r.category}</span>
+    </div>
+    <div class="card-body">
+      <h2>${r.title}</h2>
+      <p class="why">${r.why}</p>
+      <div class="card-stats">
+        <div class="figure"><span class="num">${r.kcal}</span><span class="lbl">kcal</span></div>
+        <div class="figure"><span class="num">${r.protein}</span><span class="lbl">bielkoviny</span></div>
+        <div class="figure"><span class="num">${r.fiber}</span><span class="lbl">vláknina</span></div>
+      </div>
+      <div class="card-tags">${r.tags.map(t=>`<span>${t}</span>`).join('')}</div>
+    </div>
+  </article>`;
+}
+
+function detailHTML(r){
+  return `<p class="detail-eyebrow"></p>
+    <h2>${r.title}</h2>
+    <p class="why">${r.why}</p>
+    <h3 class="section-h">Nutričný profil — na porciu</h3>
+    <div class="readout">
+      <div class="figure"><span class="num">${r.kcal}</span><span class="lbl">kcal / porcia</span></div>
+      <div class="figure"><span class="num">${r.protein}</span><span class="lbl">bielkoviny</span></div>
+      <div class="figure"><span class="num">${r.fiber}</span><span class="lbl">vláknina</span></div>
+    </div>
+    <p class="servings-pill">🍽️ ${r.servings}</p>
+    ${r.storage ? `<p class="servings-pill">🧊 ${r.storage}</p>` : ''}
+    ${r.portionWeight ? `<p class="servings-pill">⚖️ 1 porcia ≈ ${r.portionWeight}${r.portionCup ? ` (${r.portionCup})` : ''}</p>` : ''}
+    <h3 class="section-h">Suroviny</h3>
+    <ul class="ingredients">${r.ingredients.map(i=>`<li>${i}</li>`).join('')}</ul>
+    <h3 class="section-h">Postup</h3>
+    <ol class="steps">${r.steps.map(s=>`<li>${s}</li>`).join('')}</ol>
+    ${r.note ? `<div class="note-box"><span class="ico">💡</span><span><b>Poznámka:</b> ${r.note}</span></div>` : ''}
+    ${r.variations && r.variations.length ? `<h3 class="section-h">Variácie</h3>
+    <ul class="variations">${r.variations.map(v=>`<li><span class="ico">🔄</span><span>${v}</span></li>`).join('')}</ul>` : ''}
+    ${r.per100g ? `<h3 class="section-h">Nutričné hodnoty — na 100 g</h3>
+    <div class="readout">
+      <div class="figure"><span class="num">${r.per100g.kcal}</span><span class="lbl">kcal</span></div>
+      <div class="figure"><span class="num">${r.per100g.protein}</span><span class="lbl">bielkoviny</span></div>
+      ${r.per100g.fat ? `<div class="figure"><span class="num">${r.per100g.fat}</span><span class="lbl">tuky</span></div>` : ''}
+      ${r.per100g.carbs ? `<div class="figure"><span class="num">${r.per100g.carbs}</span><span class="lbl">sacharidy</span></div>` : ''}
+      <div class="figure"><span class="num">${r.per100g.fiber}</span><span class="lbl">vláknina</span></div>
+    </div>
+    <p class="servings-pill" style="font-size:12px;">Hodnoty spočítané zo surovín, nie laboratórne merané — počítaj s odchýlkou približne ±10-15 %.${r.per100gNote ? ` ${r.per100gNote}` : ''}</p>` : ''}`;
+}
+
+function render(){
+  const q = searchInput.value.trim().toLowerCase();
+  const filtered = recipes.filter(r=>{
+    const catOk = activeCat === 'all' || r.accent === activeCat;
+    if(!catOk) return false;
+    if(!q) return true;
+    const hay = (r.title + ' ' + r.ingredients.join(' ') + ' ' + r.tags.join(' ')).toLowerCase();
+    return hay.includes(q);
+  });
+  grid.innerHTML = filtered.map(cardHTML).join('');
+  emptyState.classList.toggle('show', filtered.length === 0);
+  const n = filtered.length;
+  countLine.textContent = `${n} recept${n===1?'':n>=2&&n<=4?'y':'ov'}`;
+
+  grid.querySelectorAll('.card').forEach(card=>{
+    card.addEventListener('click', ()=> openDetail(card.dataset.id));
+  });
+}
+
+function openDetail(id){
+  const r = recipes.find(x=>x.id===id);
+  if(!r) return;
+  const detailBox = document.getElementById('detailBox');
+  detailBox.dataset.accent = r.accent;
+  document.getElementById('detailEmoji').textContent = r.emoji;
+  document.getElementById('detailBadge').textContent = r.category;
+  document.getElementById('detailInner').innerHTML = detailHTML(r);
+  document.getElementById('overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeDetail(){
+  document.getElementById('overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.getElementById('closeBtn').addEventListener('click', closeDetail);
+document.getElementById('overlay').addEventListener('click', e=>{
+  if(e.target.id === 'overlay') closeDetail();
+});
+document.addEventListener('keydown', e=>{
+  if(e.key === 'Escape') closeDetail();
+});
+
+searchInput.addEventListener('input', render);
+filterBar.addEventListener('click', e=>{
+  const btn = e.target.closest('.chip');
+  if(!btn) return;
+  filterBar.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
+  btn.classList.add('active');
+  activeCat = btn.dataset.cat;
+  render();
+});
+
+render();
+</script>
+</body>
+</html>
