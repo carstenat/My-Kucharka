@@ -18,10 +18,15 @@
     --shadow-md: 0 12px 30px -12px rgba(35,36,32,0.18);
     --shadow-lg: 0 30px 60px -20px rgba(35,36,32,0.28);
 
-    --c-main:#3F7A5C;   --c-main-soft:#E7F1EA;   --c-main-deep:#265A3F;
-    --c-a:#D98A3D;       --c-a-soft:#FBEEDD;       --c-a-deep:#A85F19;
-    --c-b:#C9633F;       --c-b-soft:#FBE9E1;       --c-b-deep:#953F22;
-    --c-c:#5B7DB1;       --c-c-soft:#E7EEF9;       --c-c-deep:#33517F;
+    /* Farby patria KATEGÓRII, nie jednotlivému receptu. 8 pevných kategórií. */
+    --c-main:#3F7A5C;  --c-main-soft:#E7F1EA;  --c-main-deep:#265A3F;  /* Hlavné jedlo */
+    --c-a:#D98A3D;      --c-a-soft:#FBEEDD;      --c-a-deep:#A85F19;    /* Nátierka */
+    --c-b:#C9633F;      --c-b-soft:#FBE9E1;      --c-b-deep:#953F22;    /* Eintopf */
+    --c-c:#5B7DB1;      --c-c-soft:#E7EEF9;      --c-c-deep:#33517F;    /* Polievka */
+    --c-d:#4A9B8E;      --c-d-soft:#E3F2EF;      --c-d-deep:#2F6D63;    /* Šalát */
+    --c-e:#8A6BB0;      --c-e-soft:#EFE9F7;      --c-e-deep:#5C4680;    /* Zálievka */
+    --c-f:#C96B8A;      --c-f-soft:#FBE7EE;      --c-f-deep:#8F4463;    /* Raňajky */
+    --c-g:#8A8578;      --c-g-soft:#EDEBE6;      --c-g-deep:#5C584D;    /* Iné */
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
@@ -79,6 +84,10 @@
   .chip[data-cat="a"] .swatch{background:var(--c-a);}
   .chip[data-cat="b"] .swatch{background:var(--c-b);}
   .chip[data-cat="c"] .swatch{background:var(--c-c);}
+  .chip[data-cat="d"] .swatch{background:var(--c-d);}
+  .chip[data-cat="e"] .swatch{background:var(--c-e);}
+  .chip[data-cat="f"] .swatch{background:var(--c-f);}
+  .chip[data-cat="g"] .swatch{background:var(--c-g);}
   .chip.active{background:var(--ink); color:#fff; border-color:var(--ink);}
   .chip.active .swatch{background:#fff;}
 
@@ -111,6 +120,10 @@
   .card[data-accent="a"] .card-top{background:linear-gradient(135deg, var(--c-a), var(--c-a-deep));}
   .card[data-accent="b"] .card-top{background:linear-gradient(135deg, var(--c-b), var(--c-b-deep));}
   .card[data-accent="c"] .card-top{background:linear-gradient(135deg, var(--c-c), var(--c-c-deep));}
+  .card[data-accent="d"] .card-top{background:linear-gradient(135deg, var(--c-d), var(--c-d-deep));}
+  .card[data-accent="e"] .card-top{background:linear-gradient(135deg, var(--c-e), var(--c-e-deep));}
+  .card[data-accent="f"] .card-top{background:linear-gradient(135deg, var(--c-f), var(--c-f-deep));}
+  .card[data-accent="g"] .card-top{background:linear-gradient(135deg, var(--c-g), var(--c-g-deep));}
   .card-emoji{font-size:40px; filter:drop-shadow(0 4px 10px rgba(0,0,0,0.15)); position:relative; z-index:1;}
   .card-cat-badge{
     position:absolute; top:16px; right:18px; font-family:'Space Mono', monospace;
@@ -136,6 +149,10 @@
   .card[data-accent="a"] .card-tags span{background:var(--c-a-soft); color:var(--c-a-deep);}
   .card[data-accent="b"] .card-tags span{background:var(--c-b-soft); color:var(--c-b-deep);}
   .card[data-accent="c"] .card-tags span{background:var(--c-c-soft); color:var(--c-c-deep);}
+  .card[data-accent="d"] .card-tags span{background:var(--c-d-soft); color:var(--c-d-deep);}
+  .card[data-accent="e"] .card-tags span{background:var(--c-e-soft); color:var(--c-e-deep);}
+  .card[data-accent="f"] .card-tags span{background:var(--c-f-soft); color:var(--c-f-deep);}
+  .card[data-accent="g"] .card-tags span{background:var(--c-g-soft); color:var(--c-g-deep);}
 
   .empty-state{display:none; text-align:center; padding:90px 20px; color:var(--ink-soft);}
   .empty-state.show{display:block;}
@@ -161,6 +178,10 @@
   .detail[data-accent="a"] .detail-top{background:linear-gradient(135deg, var(--c-a), var(--c-a-deep));}
   .detail[data-accent="b"] .detail-top{background:linear-gradient(135deg, var(--c-b), var(--c-b-deep));}
   .detail[data-accent="c"] .detail-top{background:linear-gradient(135deg, var(--c-c), var(--c-c-deep));}
+  .detail[data-accent="d"] .detail-top{background:linear-gradient(135deg, var(--c-d), var(--c-d-deep));}
+  .detail[data-accent="e"] .detail-top{background:linear-gradient(135deg, var(--c-e), var(--c-e-deep));}
+  .detail[data-accent="f"] .detail-top{background:linear-gradient(135deg, var(--c-f), var(--c-f-deep));}
+  .detail[data-accent="g"] .detail-top{background:linear-gradient(135deg, var(--c-g), var(--c-g-deep));}
   .detail-emoji{font-size:52px; filter:drop-shadow(0 6px 14px rgba(0,0,0,0.2));}
   .detail-cat-badge{
     position:absolute; top:22px; right:24px; font-family:'Space Mono', monospace;
@@ -179,15 +200,21 @@
   .detail h2{font-family:'Fraunces', serif; font-weight:600; font-size:30px; margin:0 0 10px; letter-spacing:-0.01em;}
   .detail .why{color:var(--ink-soft); font-size:15.5px; margin:0 0 22px; line-height:1.6;}
 
-  .readout{display:flex; gap:12px; flex-wrap:wrap; margin-bottom:10px;}
+  .stat-heading{
+    font-family:'Space Mono', monospace; font-size:11px; letter-spacing:.08em;
+    text-transform:uppercase; color:var(--ink-soft); font-weight:700; margin:0 0 8px;
+  }
+  .readout{display:flex; gap:12px; flex-wrap:wrap; margin-bottom:4px;}
   .readout .figure{
     flex:1; min-width:100px; background:var(--bg); border-radius:14px; padding:14px 16px;
     display:flex; flex-direction:column; border:1px solid var(--line);
   }
   .readout .num{font-family:'Space Mono', monospace; font-size:19px; font-weight:700;}
   .readout .lbl{font-size:11px; color:var(--ink-soft); margin-top:2px;}
+  .readout.compact .figure{padding:11px 14px;}
+  .readout.compact .num{font-size:16px;}
 
-  .servings-pill{font-size:13px; color:var(--ink-soft); margin:12px 0 0; font-weight:500;}
+  .servings-pill{font-size:13px; color:var(--ink-soft); margin:12px 0 22px; font-weight:500;}
 
   h3.section-h{
     font-family:'Fraunces', serif; font-size:16px; font-weight:600; margin:30px 0 14px; color:var(--ink);
@@ -209,6 +236,16 @@
   }
   .note-box .ico{font-size:16px; flex:none;}
   .note-box b{color:var(--ink);}
+
+  ul.variations{list-style:none; margin:14px 0 0; padding:0; display:flex; flex-direction:column; gap:9px;}
+  ul.variations li{display:flex; gap:10px; font-size:13.5px; color:var(--ink-soft); line-height:1.5; align-items:flex-start;}
+  ul.variations li .ico{font-size:14px; flex:none; margin-top:1px;}
+
+  .per100-note{font-size:12px; color:var(--ink-soft); margin:10px 0 0; font-style:italic;}
+  .per100-missing{
+    margin-top:30px; padding:14px 18px; border-radius:14px; background:var(--bg);
+    border:1px dashed var(--line); font-size:13px; color:var(--ink-soft);
+  }
 
   footer{
     border-top:1px solid var(--line); padding:44px 0 80px;
@@ -244,15 +281,9 @@
         <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
         <input type="text" id="searchInput" placeholder="Hľadaj recept alebo surovinu…">
       </div>
-      <div class="filters" id="filterBar">
-        <button class="chip active" data-cat="all">✨ Všetko</button>
-        <button class="chip" data-cat="main"><span class="swatch"></span>Hlavné jedlo</button>
-        <button class="chip" data-cat="a"><span class="swatch"></span>Nátierka</button>
-        <button class="chip" data-cat="b"><span class="swatch"></span>Nátierka</button>
-        <button class="chip" data-cat="c"><span class="swatch"></span>Nátierka</button>
-      </div>
+      <div class="filters" id="filterBar"></div>
     </div>
-    <p class="count-line" id="countLine">4 recepty</p>
+    <p class="count-line" id="countLine"></p>
   </div>
 
   <div class="grid" id="grid"></div>
@@ -264,7 +295,9 @@
 
   <footer>
     <p class="hi">Dobrú chuť!</p>
-    <p>Pridať recept → skopíruj jeden objekt v poli <code>recipes</code> v zdrojovom kóde a uprav.</p>
+    <p>Pridať recept → skopíruj jeden objekt v poli <code>recipes</code> v zdrojovom kóde a uprav.
+    Kategória (<code>category</code>) musí byť jedna z existujúcich kľúčov v <code>CATEGORY_META</code> —
+    farba patrí kategórii, nie receptu.</p>
   </footer>
 </div>
 
@@ -280,16 +313,29 @@
 </div>
 
 <script>
+/* Kategórie sú fixné, farba patrí kategórii — nikdy jednotlivému receptu.
+   Poradie tu = poradie filter tlačidiel (len tie, čo majú aspoň 1 recept). */
+const CATEGORY_META = {
+  "hlavne-jedlo": { label: "Hlavné jedlo", accent: "main" },
+  "natierka":     { label: "Nátierka",      accent: "a" },
+  "eintopf":      { label: "Eintopf",       accent: "b" },
+  "polievka":     { label: "Polievka",      accent: "c" },
+  "salat":        { label: "Šalát",         accent: "d" },
+  "zalievka":     { label: "Zálievka",      accent: "e" },
+  "ranajky":      { label: "Raňajky",       accent: "f" },
+  "ine":          { label: "Iné",           accent: "g" }
+};
+
 const recipes = [
   {
     id: "gulas",
-    accent: "main",
+    category: "hlavne-jedlo",
     emoji: "🍲",
-    category: "Hlavné jedlo",
     title: "Šošovicovo-sójový guláš so sladkým zemiakom a zeleninou",
     why: "Sója aj šošovica dávajú vysokú bielkovinu, sladký zemiak sýtosť, paprika a paradajky prehĺbia gulášovú chuť, rukola sa pridá na záver ako čerstvý kontrast.",
     kcal: "400-440", protein: "29-33 g", fiber: "16-18 g",
     servings: "4 porcie",
+    servingWeight: "~430 g",
     tags: ["guláš", "strukoviny", "jednohrncové", "sója"],
     ingredients: [
       "150 g suchá červená šošovica","100 g sójové kocky (sušené)",
@@ -309,40 +355,53 @@ const recipes = [
       "Odstav, dochuť soľou/octom, primiešaj citrónovú šťavu.",
       "Rukolu vmiešaj tesne pred podávaním alebo navrch ako topping."
     ],
-    note: "Vitamín C z papriky, paradajok a citróna pomáha vstrebávaniu železa zo šošovice/sóje napriek fytátom. Vápnik je stále nízky — sezam/tahini navrch pri podávaní by to doplnil."
+    note: "Vitamín C z papriky, paradajok a citróna pomáha vstrebávaniu železa zo šošovice/sóje napriek fytátom. Vápnik je stále nízky — sezam/tahini navrch pri podávaní by to doplnil. Dlhším varením (15+ min) sa časť vitamínu C z paradajok aj tak rozloží (odhadovane o 15-25 % oproti surovému stavu) — zvyšok je aj napriek tomu dostatočný na svoju funkciu pri vstrebávaní železa.",
+    variations: [
+      "Cícer namiesto sójových kociek — hutnejšia, orieškovejšia textúra, o niečo nižšia bielkovina.",
+      "Zeler namiesto sladkého zemiaka — menej sladké, viac zemité, nižší glykemický náloz.",
+      "Kel namiesto rukoly — výraznejšia, mierne horkastá chuť namiesto jemnej pikantnosti."
+    ]
+    /* per100g zatiaľ nepočítané — dorobiť pri najbližšej príležitosti */
   },
   {
     id: "fazula",
-    accent: "a",
+    category: "natierka",
     emoji: "🫘",
-    category: "Nátierka",
     title: "Biela fazuľa & sušené paradajky",
-    why: "Fazuľa dáva krémovú základňu, sušené paradajky a cesnak intenzívnu umami hĺbku — bez kvapky oleja.",
-    kcal: "140", protein: "9 g", fiber: "6 g",
+    why: "Fazuľa dáva krémovú základňu, sušené paradajky umami hĺbku, cesnak a čerstvá bazalka aromatiku, citrón jediný jasný zdroj kyslosti — menej prísad, čistejšia chuť (\"menej je viac\", sekcia 5 master promptu).",
+    kcal: "234", protein: "13,2 g", fiber: "10,3 g",
     servings: "4 porcie · ~16 mini formičiek",
+    servingWeight: "~147 g (~½ cup / ~10 tbsp)",
     tags: ["mrazená nátierka", "mediteránska", "fazuľa"],
     ingredients: [
       "2× 400 g biela fazuľa, konzerva (scedená)","40 g sušené paradajky (nie v oleji)",
-      "2 strúčiky cesnaku","2 lyžice tahini","1 lyžička citrónovej šťavy",
-      "1 lyžička údenej papriky","hrsť čerstvej bazalky","soľ, čierne korenie"
+      "3 strúčiky cesnaku","2 lyžice tahini","1 lyžička citrónovej šťavy",
+      "1 lyžička údenej papriky","väčšia hrsť čerstvej bazalky","štipka čili vločiek (voliteľné)",
+      "soľ, čerstvo mleté čierne korenie"
     ],
     steps: [
-      "Sušené paradajky namoč 10 min v horúcej vode, sceď (šťavu si nechaj).",
+      "Sušené paradajky namoč 10 min v horúcej vode, sceď (šťavu si nechaj bokom).",
       "Fazuľu, paradajky, cesnak, tahini, citrón, papriku a bazalku rozmixuj dohladka.",
-      "Dochuť soľou a korením — výraznejšie, mrazom sa chuť stlmí.",
+      "Dochuť soľou, korením, prípadne čili vločkami — výraznejšie, mrazom sa chuť stlmí.",
       "Nalej do formičiek, zarovnaj, zamraz aspoň 4 h."
     ],
-    note: "Fytáty vo fazuli mierne brzdia železo a zinok — citrón to čiastočne kompenzuje."
+    note: "Fytáty vo fazuli mierne brzdia vstrebávanie železa a zinku — citrónová šťava (vitamín C) to čiastočne kompenzuje.",
+    variations: [
+      "Cícer namiesto bielej fazule — zrnitejšia textúra, orieškovejšia chuť.",
+      "Pečená červená paprika namiesto sušených paradajok — sladšia, dymovejšia, menej kyslá.",
+      "Petržlenová vňať namiesto bazalky — sviežejšia, ostrejšia zelená chuť."
+    ],
+    per100g: { kcal: 159, protein: 9.0, fat: 3.5, carbs: 24.7, fiber: 7.0 }
   },
   {
     id: "sosovica-miso",
-    accent: "b",
+    category: "natierka",
     emoji: "🍜",
-    category: "Nátierka",
     title: "Šošovica & miso-zázvor",
     why: "Biele miso dodá hlbokú slanosť bez soli navyše, zázvor a limetka ju rozžiaria.",
     kcal: "150", protein: "10 g", fiber: "5 g",
     servings: "4 porcie",
+    servingWeight: null,
     tags: ["mrazená nátierka", "ázijská", "miso"],
     ingredients: [
       "200 g suchá červená šošovica","500 ml voda","2 lyžice biele miso",
@@ -355,17 +414,23 @@ const recipes = [
       "Vmiešaj jarnú cibuľku, dochuť čili.",
       "Do formičiek, zamraz."
     ],
-    note: "Miso aj sójovka sú už slané — nedosoľuj naslepo. Limetka pomáha vstrebávaniu železa."
+    note: "Miso aj sójovka sú už slané — nedosoľuj naslepo. Limetka pomáha vstrebávaniu železa.",
+    variations: [
+      "Cícer namiesto šošovice — hutnejšia, menej krémová textúra.",
+      "Tmavé miso namiesto bieleho — výraznejšia, slanšia a viac fermentovaná chuť.",
+      "Citrón namiesto limetky — miernejšia kyslosť, menej aromatická."
+    ]
+    /* per100g zatiaľ nepočítané — dorobiť pri najbližšej príležitosti */
   },
   {
     id: "tofu-paprika",
-    accent: "c",
+    category: "natierka",
     emoji: "🌶️",
-    category: "Nátierka",
     title: "Tofu & pečená paprika",
     why: "Tofu dá hodvábnu textúru a najviac bielkovín, sucho opečená paprika prinesie dymovú hĺbku.",
     kcal: "130", protein: "11 g", fiber: "3 g",
     servings: "4 porcie",
+    servingWeight: null,
     tags: ["mrazená nátierka", "dymová", "tofu"],
     ingredients: [
       "300 g tuhé biele tofu","1 väčšia červená paprika","1 lyžica tahini",
@@ -378,7 +443,13 @@ const recipes = [
       "Rozmixuj tofu, papriku, tahini, sójovku, cesnak, papriku, citrón dohladka.",
       "Dochuť, naplň formičky, zamraz."
     ],
-    note: "Ak je tofu bez vápnika (typ \"nigari\"), zváž lyžicu maku navyše."
+    note: "Ak je tofu bez vápnika (typ \"nigari\"), zváž lyžicu maku navyše.",
+    variations: [
+      "Biela fazuľa namiesto tofu — krémovejšia, menej hodvábna textúra, o niečo nižšia bielkovina.",
+      "Pečená mrkva namiesto papriky — sladšia, menej dymová chuť.",
+      "Rímska paprika/čili namiesto údenej papriky — výraznejšia pikantnosť namiesto dymovosti."
+    ]
+    /* per100g zatiaľ nepočítané — dorobiť pri najbližšej príležitosti */
   }
 ];
 
@@ -389,46 +460,89 @@ const searchInput = document.getElementById('searchInput');
 const filterBar = document.getElementById('filterBar');
 let activeCat = 'all';
 
+/* Filter tlačidlá sa generujú len z kategórií, ktoré majú aspoň 1 recept —
+   nikdy jedno tlačidlo na jeden recept, nikdy prázdna kategória. */
+function buildFilterBar(){
+  const present = new Set(recipes.map(r => r.category));
+  let html = `<button class="chip active" data-cat="all">✨ Všetko</button>`;
+  for(const key in CATEGORY_META){
+    if(!present.has(key)) continue;
+    const meta = CATEGORY_META[key];
+    html += `<button class="chip" data-cat="${meta.accent}" data-catkey="${key}"><span class="swatch"></span>${meta.label}</button>`;
+  }
+  filterBar.innerHTML = html;
+  filterBar.querySelectorAll('.chip').forEach(chip=>{
+    chip.addEventListener('click', ()=>{
+      filterBar.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
+      chip.classList.add('active');
+      activeCat = chip.dataset.catkey || 'all';
+      render();
+    });
+  });
+}
+
 function cardHTML(r){
-  return `<article class="card" data-accent="${r.accent}" data-id="${r.id}">
+  const meta = CATEGORY_META[r.category];
+  return `<article class="card" data-accent="${meta.accent}" data-id="${r.id}">
     <div class="card-top">
       <span class="card-emoji">${r.emoji}</span>
-      <span class="card-cat-badge">${r.category}</span>
+      <span class="card-cat-badge">${meta.label}</span>
     </div>
     <div class="card-body">
       <h2>${r.title}</h2>
       <p class="why">${r.why}</p>
       <div class="card-stats">
-        <div class="figure"><span class="num">${r.kcal}</span><span class="lbl">kcal</span></div>
-        <div class="figure"><span class="num">${r.protein}</span><span class="lbl">bielkoviny</span></div>
-        <div class="figure"><span class="num">${r.fiber}</span><span class="lbl">vláknina</span></div>
+        <div class="figure"><span class="num">${r.kcal}</span><span class="lbl">kcal/porciu</span></div>
+        <div class="figure"><span class="num">${r.protein}</span><span class="lbl">bielk./porciu</span></div>
+        <div class="figure"><span class="num">${r.fiber}</span><span class="lbl">vlákn./porciu</span></div>
       </div>
       <div class="card-tags">${r.tags.map(t=>`<span>${t}</span>`).join('')}</div>
     </div>
   </article>`;
 }
 
+function per100HTML(r){
+  if(r.per100g){
+    const p = r.per100g;
+    return `<h3 class="section-h">Nutričné hodnoty — na 100 g</h3>
+    <div class="readout compact">
+      <div class="figure"><span class="num">${p.kcal}</span><span class="lbl">kcal</span></div>
+      <div class="figure"><span class="num">${p.protein} g</span><span class="lbl">bielkoviny</span></div>
+      <div class="figure"><span class="num">${p.fat} g</span><span class="lbl">tuky</span></div>
+      <div class="figure"><span class="num">${p.carbs} g</span><span class="lbl">sacharidy</span></div>
+      <div class="figure"><span class="num">${p.fiber} g</span><span class="lbl">vláknina</span></div>
+    </div>
+    <p class="per100-note">Spočítané zo surovín (USDA-based), nie laboratórne merané — počítaj s odchýlkou ±10-15 %.</p>`;
+  }
+  return `<div class="per100-missing">📋 Nutričné hodnoty na 100 g zatiaľ nie sú prepočítané pre tento recept — doplní sa pri najbližšej príležitosti.</div>`;
+}
+
 function detailHTML(r){
+  const meta = CATEGORY_META[r.category];
   return `<p class="detail-eyebrow"></p>
     <h2>${r.title}</h2>
     <p class="why">${r.why}</p>
+    <p class="stat-heading">Na porciu</p>
     <div class="readout">
-      <div class="figure"><span class="num">${r.kcal}</span><span class="lbl">kcal / porcia</span></div>
+      <div class="figure"><span class="num">${r.kcal}</span><span class="lbl">kcal</span></div>
       <div class="figure"><span class="num">${r.protein}</span><span class="lbl">bielkoviny</span></div>
       <div class="figure"><span class="num">${r.fiber}</span><span class="lbl">vláknina</span></div>
     </div>
-    <p class="servings-pill">🍽️ ${r.servings}</p>
+    <p class="servings-pill">🍽️ ${r.servings}${r.servingWeight ? ` · 1 porcia ≈ ${r.servingWeight}` : ''}</p>
     <h3 class="section-h">Suroviny</h3>
     <ul class="ingredients">${r.ingredients.map(i=>`<li>${i}</li>`).join('')}</ul>
     <h3 class="section-h">Postup</h3>
     <ol class="steps">${r.steps.map(s=>`<li>${s}</li>`).join('')}</ol>
-    ${r.note ? `<div class="note-box"><span class="ico">💡</span><span><b>Poznámka:</b> ${r.note}</span></div>` : ''}`;
+    ${r.note ? `<div class="note-box"><span class="ico">💡</span><span><b>Poznámka:</b> ${r.note}</span></div>` : ''}
+    ${r.variations && r.variations.length ? `<h3 class="section-h">Variácie</h3>
+    <ul class="variations">${r.variations.map(v=>`<li><span class="ico">🔄</span><span>${v}</span></li>`).join('')}</ul>` : ''}
+    ${per100HTML(r)}`;
 }
 
 function render(){
   const q = searchInput.value.trim().toLowerCase();
   const filtered = recipes.filter(r=>{
-    const catOk = activeCat === 'all' || r.accent === activeCat;
+    const catOk = activeCat === 'all' || r.category === activeCat;
     if(!catOk) return false;
     if(!q) return true;
     const hay = (r.title + ' ' + r.ingredients.join(' ') + ' ' + r.tags.join(' ')).toLowerCase();
@@ -447,10 +561,11 @@ function render(){
 function openDetail(id){
   const r = recipes.find(x=>x.id===id);
   if(!r) return;
+  const meta = CATEGORY_META[r.category];
   const detailBox = document.getElementById('detailBox');
-  detailBox.dataset.accent = r.accent;
+  detailBox.dataset.accent = meta.accent;
   document.getElementById('detailEmoji').textContent = r.emoji;
-  document.getElementById('detailBadge').textContent = r.category;
+  document.getElementById('detailBadge').textContent = meta.label;
   document.getElementById('detailInner').innerHTML = detailHTML(r);
   document.getElementById('overlay').classList.add('open');
   document.body.style.overflow = 'hidden';
@@ -468,15 +583,8 @@ document.addEventListener('keydown', e=>{
 });
 
 searchInput.addEventListener('input', render);
-filterBar.addEventListener('click', e=>{
-  const btn = e.target.closest('.chip');
-  if(!btn) return;
-  filterBar.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
-  btn.classList.add('active');
-  activeCat = btn.dataset.cat;
-  render();
-});
 
+buildFilterBar();
 render();
 </script>
 </body>
