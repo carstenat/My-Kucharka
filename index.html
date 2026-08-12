@@ -23,6 +23,7 @@
     --c-b:#C9633F;       --c-b-soft:#FBE9E1;       --c-b-deep:#953F22;
     --c-c:#5B7DB1;       --c-c-soft:#E7EEF9;       --c-c-deep:#33517F;
     --c-g:#8A6BAE;       --c-g-soft:#F0EAF7;       --c-g-deep:#5C4380;
+    --c-h:#8C8347;       --c-h-soft:#F1EFE1;       --c-h-deep:#5E5730;
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
@@ -81,6 +82,7 @@
   .chip[data-cat="b"] .swatch{background:var(--c-b);}
   .chip[data-cat="c"] .swatch{background:var(--c-c);}
   .chip[data-cat="g"] .swatch{background:var(--c-g);}
+  .chip[data-cat="h"] .swatch{background:var(--c-h);}
   .chip.active{background:var(--ink); color:#fff; border-color:var(--ink);}
   .chip.active .swatch{background:#fff;}
 
@@ -114,6 +116,7 @@
   .card[data-accent="b"] .card-top{background:linear-gradient(135deg, var(--c-b), var(--c-b-deep));}
   .card[data-accent="c"] .card-top{background:linear-gradient(135deg, var(--c-c), var(--c-c-deep));}
   .card[data-accent="g"] .card-top{background:linear-gradient(135deg, var(--c-g), var(--c-g-deep));}
+  .card[data-accent="h"] .card-top{background:linear-gradient(135deg, var(--c-h), var(--c-h-deep));}
   .card-emoji{font-size:40px; filter:drop-shadow(0 4px 10px rgba(0,0,0,0.15)); position:relative; z-index:1;}
   .card-cat-badge{
     position:absolute; top:16px; right:18px; font-family:'Space Mono', monospace;
@@ -140,6 +143,7 @@
   .card[data-accent="b"] .card-tags span{background:var(--c-b-soft); color:var(--c-b-deep);}
   .card[data-accent="c"] .card-tags span{background:var(--c-c-soft); color:var(--c-c-deep);}
   .card[data-accent="g"] .card-tags span{background:var(--c-g-soft); color:var(--c-g-deep);}
+  .card[data-accent="h"] .card-tags span{background:var(--c-h-soft); color:var(--c-h-deep);}
 
   .empty-state{display:none; text-align:center; padding:90px 20px; color:var(--ink-soft);}
   .empty-state.show{display:block;}
@@ -166,6 +170,7 @@
   .detail[data-accent="b"] .detail-top{background:linear-gradient(135deg, var(--c-b), var(--c-b-deep));}
   .detail[data-accent="c"] .detail-top{background:linear-gradient(135deg, var(--c-c), var(--c-c-deep));}
   .detail[data-accent="g"] .detail-top{background:linear-gradient(135deg, var(--c-g), var(--c-g-deep));}
+  .detail[data-accent="h"] .detail-top{background:linear-gradient(135deg, var(--c-h), var(--c-h-deep));}
   .detail-emoji{font-size:52px; filter:drop-shadow(0 6px 14px rgba(0,0,0,0.2));}
   .detail-cat-badge{
     position:absolute; top:22px; right:24px; font-family:'Space Mono', monospace;
@@ -218,6 +223,15 @@
   }
   .note-box .ico{font-size:16px; flex:none;}
   .note-box b{color:var(--ink);}
+
+  .science-box{
+    margin-top:14px; background:#f4f1ea; border:1px solid var(--line); border-radius:16px; padding:16px 20px;
+    font-size:13.5px; color:var(--ink-soft); display:flex; gap:10px; line-height:1.55;
+  }
+  .science-box .ico{font-size:16px; flex:none;}
+  .science-box b{color:var(--ink);}
+  .science-box a{color:var(--ink); text-decoration:underline; text-underline-offset:2px;}
+  .science-box a:hover{opacity:0.7;}
 
   ul.variations{list-style:none; margin:14px 0 0; padding:0; display:flex; flex-direction:column; gap:9px;}
   ul.variations li{display:flex; gap:10px; font-size:13.5px; color:var(--ink-soft); line-height:1.5; align-items:flex-start;}
@@ -587,38 +601,46 @@ const recipes = [
   },
   {
     id: "pohanka-pilaf",
-    accent: "g",
+    accent: "h",
     emoji: "🍚",
-    category: "Iné",
-    title: "Sypká pohanka na pare (pilaf metóda)",
-    why: "Praženie nasucho vytvorí orieškovú arómu a zabráni rozvareniu, para namiesto miešania udrží zrnká oddelené a pevné na skus.",
+    category: "Príloha",
+    title: "Sypká pohanka na pare (svetlá bio, pilaf metóda)",
+    why: "Krátke zohriatie nasucho jemne vysuší povrch zrna bez tmavnutia, para namiesto miešania udrží zrnká oddelené a pevné na skus — svetlá bio pohanka si tak zachová jemnejšiu, menej horkastú chuť než pražená kasha.",
     kcal: "140-150", protein: "5-6 g", fiber: "4 g",
     servings: "4 porcie",
     storage: "Chladnička 3-4 dni",
     portionWeight: "128-153 g uvarenej pohanky",
     portionCup: "~½-⅔ cup",
     per100g: { kcal: "333", protein: "13 g", fat: "3 g", carbs: "71 g", fiber: "10 g" },
-    per100gNote: "Hodnoty z USDA pre surovú pohanku (počíta sa zo surovej/suchej hmotnosti pred varením, sekcia 7e). Hmotnosť porcie dopočítaná z yield faktora ~3,0-3,6× (kuchárske zdroje, nie USDA — nižšia úroveň dôkazu, over pri budúcom použití váhou po uvarení).",
+    per100gNote: "Hodnoty z USDA pre surovú pohanku (zhodné pre svetlú aj tmavú v surovom stave). Hmotnosť porcie dopočítaná z yield faktora ~3,0-3,6× (kuchárske zdroje, nie USDA — nižšia úroveň dôkazu, over pri budúcom použití váhou po uvarení).",
     tags: ["príloha", "pohanka", "bez lepku", "jednohrncové"],
     ingredients: [
-      "170 g (1 hrnček) pohanky, svetlá alebo tmavá",
+      "170 g (1 hrnček) svetlej bio pohanky, nepražená",
       "360 ml (1½ hrnčeka) vriaceho zeleninového alebo hubového vývaru",
       "1 strúčik cesnaku, ošúpaný a jemne rozpučený vcelku",
       "štipka soli (ak vývar nie je dostatočne slaný)"
     ],
     steps: [
-      "Pohanku prelej v sitku vriacou vodou.",
-      "Na suchom rozpálenom hrnci opekaj odkvapkanú pohanku s celým rozpučeným strúčikom cesnaku 2 min do orieškovej vône.",
+      "Pohanku prelej v sitku vriacou vodou, dobre prepláchni.",
+      "Na suchom rozpálenom hrnci nechaj odkvapkanú pohanku s celým rozpučeným strúčikom cesnaku 1 min mierne zohriať za stáleho miešania — netreba pražiť do zhnednutia, cieľom je len osušiť povrch.",
       "Zalej vriacim vývarom, pridaj soľ ak treba.",
-      "Prikry, stíš plameň na minimum, var 10 min bez odkrytia a bez miešania.",
-      "Odstav, nechaj 2 min dôjsť v pare pod pokrievkou.",
+      "Prikry, stíš plameň na minimum, var 12-15 min bez odkrytia a bez miešania.",
+      "Odstav, nechaj 5 min dôjsť v pare pod pokrievkou.",
       "Vyber cesnak, prehrabni vidličkou."
     ],
-    note: "Fytáty v pohanke sú čiastočne znížené pražením a varením. Hmotnosť hotovej porcie vychádza z pomeru sucho→uvarená ~3,0-3,6× — ak na presnosti výrazne záleží, over pri budúcom použití váhou po uvarení.",
     variations: [
       "Quinoa namiesto pohanky — jemnejšia chuť, o niečo vyššia bielkovina.",
       "Zeleninový vývar s paradajkovým pretlakom — hlbšia, mierne kyslkastá chuť.",
-      "Cibuľka navyše pri opekaní — sladšia, karamelizovaná hĺbka chuti."
+      "Cibuľka navyše pri opekaní — sladšia, karamelizovaná hĺbka chuti.",
+      "Voda + Gregerova \"savory\" korenistá zmes namiesto zeleninového vývaru — ak nemáš po ruke hotový bezolejový vývar, rozpusti v 360 ml vriacej vody 4-6 g (~3 lyžičky) vlastnoručne pripravenej zmesi (lahôdkové droždie, cibuľový a cesnakový prášok, sušená petržlenová vňať, bazalka, tymian, horčicový prášok, paprika, mletá kurkuma, semienka celeru — pomer podľa Gregerovej \"Savory Spice Blend\", How Not to Die Cookbook) a dosoľ podľa chuti. Chuťovo o niečo bylinkovejšia než čistý vývar, rovnako bez pridaného tuku."
+    ],
+    goodToKnow: [
+      {
+        text: "Var vo vode/pare (namiesto praženia do zhneda) nie je len o jemnejšej chuti — podľa prehľadovej štúdie var zachováva obsah rutínu (hlavný antioxidant pohanky) a zvyšuje obsah ďalších polyfenolov, zatiaľ čo praženie/pieckovanie môže časť rutínu a kyseliny kumárovej zničiť. Tento recept je preto navrhnutý zámerne bez pieckovania do hneda.",
+        sources: [
+          { label: "Prehľadová štúdia, Critical Reviews in Food Science (2023)", url: "https://www.tandfonline.com/doi/full/10.1080/10408398.2023.2249112" }
+        ]
+      }
     ]
   }
 ];
@@ -690,7 +712,9 @@ function detailHTML(r){
       ${r.per100g.carbs ? `<div class="figure"><span class="num">${r.per100g.carbs}</span><span class="lbl">sacharidy</span></div>` : ''}
       <div class="figure"><span class="num">${r.per100g.fiber}</span><span class="lbl">vláknina</span></div>
     </div>
-    <p class="servings-pill" style="font-size:12px;">Hodnoty spočítané zo surovín, nie laboratórne merané — počítaj s odchýlkou približne ±10-15 %.${r.per100gNote ? ` ${r.per100gNote}` : ''}</p>` : ''}`;
+    <p class="servings-pill" style="font-size:12px;">Hodnoty spočítané zo surovín, nie laboratórne merané — počítaj s odchýlkou približne ±10-15 %.${r.per100gNote ? ` ${r.per100gNote}` : ''}</p>` : ''}
+    ${r.goodToKnow && r.goodToKnow.length ? r.goodToKnow.map(g=>`
+    <div class="science-box"><span class="ico">🔬</span><span><b>Dobré vedieť:</b> ${g.text}${g.sources && g.sources.length ? ` <span style="white-space:nowrap;">(${g.sources.map(s=>`<a href="${s.url}" target="_blank" rel="noopener">${s.label}</a>`).join(', ')})</span>` : ''}</span></div>`).join('') : ''}`;
 }
 
 function render(){
