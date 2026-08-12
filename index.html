@@ -197,9 +197,13 @@
   h3.section-h{
     font-family:'Fraunces', serif; font-size:16px; font-weight:600; margin:30px 0 14px; color:var(--ink);
   }
-  ul.ingredients{list-style:none; margin:0; padding:0; display:flex; flex-wrap:wrap; gap:9px;}
+  ul.ingredients{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:8px;}
   ul.ingredients li{
-    font-size:13.5px; padding:8px 14px; border-radius:20px; background:var(--bg); border:1px solid var(--line);
+    font-size:14px; padding:9px 14px; border-radius:10px; background:var(--bg); border:1px solid var(--line);
+    display:flex; align-items:center; gap:10px;
+  }
+  ul.ingredients li::before{
+    content:""; width:5px; height:5px; border-radius:50%; background:var(--ink-soft); flex:none;
   }
   ol.steps{margin:0; padding:0; list-style:none; counter-reset:step; display:flex; flex-direction:column; gap:13px;}
   ol.steps li{counter-increment:step; display:flex; gap:14px; font-size:15px; align-items:flex-start;}
@@ -467,7 +471,7 @@ const recipes = [
     emoji: "🍊",
     category: "Iné",
     title: "Pohankovo-datľové tyčinky — zázvorovo-pomarančové",
-    why: "Sviežа, korenistá verzia — pomarančová šťava a zázvor rozžiaria datľovú sladkosť, škorica a klinček dodajú teplo bez toho, aby prevážili nad pohankou.",
+    why: "Svieža, korenistá verzia — pomarančová šťava a zázvor rozžiaria datľovú sladkosť, škorica a klinček dodajú teplo bez toho, aby prevážili nad pohankou.",
     kcal: "128", protein: "2.8 g", fiber: "3.5 g",
     per100g: { kcal: "365", protein: "8 g", fat: "13 g", carbs: "46 g", fiber: "10 g" },
     servings: "8 tyčiniek",
@@ -542,6 +546,79 @@ const recipes = [
       "Arašidové maslo namiesto mandľového — výraznejšia, orieškovejšia chuť.",
       "Sušené marhule namiesto brusníc — menej kyslé, sladšia ovocná nota.",
       "Pomarančová šťava namiesto citrónovej — sladšia, menej ostrá kyslosť."
+    ]
+  },
+  {
+    id: "panvica-tofu-fazula",
+    accent: "main",
+    emoji: "🥘",
+    category: "Hlavné jedlo",
+    title: "Proteínová panvica — tofu, fazuľa, brokolica, kel",
+    why: "Tofu a fazuľa spolu dávajú vysokú bielkovinu, tahini-horčicová omáčka s droždím dodá krémovú umami hĺbku bez oleja, brokolica a kel pridajú objem, vlákninu a skutočne dostupný vápnik.",
+    kcal: "390-425", protein: "30-33 g", fiber: "13-15 g",
+    servings: "2 porcie",
+    portionWeight: "435-445 g",
+    per100g: { kcal: "92", protein: "7 g", fiber: "3 g" },
+    per100gNote: "Hodnoty spočítané zo surovín, nie laboratórne merané — počítaj s odchýlkou približne ±10-15 %.",
+    tags: ["panvica", "tofu", "strukoviny", "rýchle"],
+    ingredients: [
+      "180 g údené tofu, kocky","240 g červenej fazule, konzerva (prepláchnutá, scedená)",
+      "110 g cibule, nadrobno","9 g cesnaku (3 strúčiky), nasekaný",
+      "150 g brokolice, mini ružičky","40 g kelu (kučeravý), nasekaný na jemné pásiky, hrubé stonky odstránené",
+      "8 g tahini (bez oleja)","10 g dijonskej horčice (2 lyžičky)",
+      "30 g citrónovej šťavy (2 lyžice)","4,5 g lahôdkového droždia (1,5 lyžičky)",
+      "2 g mletej kurkumy (½ lyžičky)","štipka čierneho korenia",
+      "100 ml zeleninového/hubového vývaru","soľ podľa chuti"
+    ],
+    steps: [
+      "Na suchej rozpálenej nepriľnavej panvici opeč kocky tofu do zlatista (4 min).",
+      "Pridaj cibuľu a cesnak, miešaj 1 min, prilej 2 lyžice vody, aby cibuľa zmäkla (2 min).",
+      "Pridaj brokolicu a fazuľu. Niekoľko fazúľ rozpuč varechou o dno panvice. Prilej 4 lyžice vody, prikry a duste v pare (4 min).",
+      "V pohári zmiešaj tahini, horčicu, citrónovú šťavu, droždie, kurkumu a vývar dohladka.",
+      "Odkry, stíš plameň, pridaj kel a zalej omáčkou. Miešaj, kým kel nezvädne a omáčka nezhustne (2-3 min).",
+      "Dochuť soľou a korením."
+    ],
+    note: "Fazuľa obsahuje fytáty, ktoré mierne znižujú vstrebávanie železa a zinku — citrónová šťava (vitamín C) to čiastočne kompenzuje. Kel má na rozdiel od špenátu nízky obsah oxalátov, takže vápnik z neho aj z tahini je v tomto jedle skutočne dostupný, nie blokovaný.",
+    variations: [
+      "Cícer namiesto červenej fazule — jemnejšia, menej zemitá chuť, mierne nižšia bielkovina.",
+      "Mangold namiesto kelu — jemnejšia, menej horkastá chuť, ale vracia späť vysoký obsah oxalátov.",
+      "Karfiol namiesto brokolice — jemnejšia chuť, o niečo nižší obsah bielkovín a vitamínu K."
+    ]
+  },
+  {
+    id: "pohanka-pilaf",
+    accent: "g",
+    emoji: "🍚",
+    category: "Iné",
+    title: "Sypká pohanka na pare (pilaf metóda)",
+    why: "Praženie nasucho vytvorí orieškovú arómu a zabráni rozvareniu, para namiesto miešania udrží zrnká oddelené a pevné na skus.",
+    kcal: "140-150", protein: "5-6 g", fiber: "4 g",
+    servings: "4 porcie",
+    storage: "Chladnička 3-4 dni",
+    portionWeight: "128-153 g uvarenej pohanky",
+    portionCup: "~½-⅔ cup",
+    per100g: { kcal: "333", protein: "13 g", fat: "3 g", carbs: "71 g", fiber: "10 g" },
+    per100gNote: "Hodnoty z USDA pre surovú pohanku (počíta sa zo surovej/suchej hmotnosti pred varením, sekcia 7e). Hmotnosť porcie dopočítaná z yield faktora ~3,0-3,6× (kuchárske zdroje, nie USDA — nižšia úroveň dôkazu, over pri budúcom použití váhou po uvarení).",
+    tags: ["príloha", "pohanka", "bez lepku", "jednohrncové"],
+    ingredients: [
+      "170 g (1 hrnček) pohanky, svetlá alebo tmavá",
+      "360 ml (1½ hrnčeka) vriaceho zeleninového alebo hubového vývaru",
+      "1 strúčik cesnaku, ošúpaný a jemne rozpučený vcelku",
+      "štipka soli (ak vývar nie je dostatočne slaný)"
+    ],
+    steps: [
+      "Pohanku prelej v sitku vriacou vodou.",
+      "Na suchom rozpálenom hrnci opekaj odkvapkanú pohanku s celým rozpučeným strúčikom cesnaku 2 min do orieškovej vône.",
+      "Zalej vriacim vývarom, pridaj soľ ak treba.",
+      "Prikry, stíš plameň na minimum, var 10 min bez odkrytia a bez miešania.",
+      "Odstav, nechaj 2 min dôjsť v pare pod pokrievkou.",
+      "Vyber cesnak, prehrabni vidličkou."
+    ],
+    note: "Fytáty v pohanke sú čiastočne znížené pražením a varením. Hmotnosť hotovej porcie vychádza z pomeru sucho→uvarená ~3,0-3,6× — ak na presnosti výrazne záleží, over pri budúcom použití váhou po uvarení.",
+    variations: [
+      "Quinoa namiesto pohanky — jemnejšia chuť, o niečo vyššia bielkovina.",
+      "Zeleninový vývar s paradajkovým pretlakom — hlbšia, mierne kyslkastá chuť.",
+      "Cibuľka navyše pri opekaní — sladšia, karamelizovaná hĺbka chuti."
     ]
   }
 ];
