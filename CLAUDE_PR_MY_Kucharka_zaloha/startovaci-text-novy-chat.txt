@@ -1,36 +1,35 @@
-ŠTARTOVACÍ TEXT PRE NOVÝ CHAT — projekt "Moja kuchárka"
+ŠTARTOVACÍ TEXT PRE NOVÝ CHAT — projekt "Moja kuchárka" (recept-chat)
 
 Skopíruj a vlož toto ako prvú správu v novom chate, keď chceš vytvoriť nový
-recept alebo riešiť čokoľvek okrem úpravy samotného master promptu alebo
-webstránky.
+recept alebo upraviť existujúci recept.
 
 ---
 
-Pracujeme v projekte "Moja kuchárka" (rastlinná WFPB kuchárka bez oleja).
+Nový recept pre projekt "Moja kuchárka".
 
-Drž sa presne master promptu "Rastlinný Nutričný Kuchár" nahraného v Project
-files tohto projektu (aktuálne v1.12) — over si ho priamo zo súboru, nie
-z pamäte/predpokladu, keďže existuje viacero chatov a verzia sa priebežne
-vyvíja. Rovnako použi lookup tabuľky (tabulka-nutricnych-interakcii.md,
-tabulka-cups-gramy-v1_1.md) namiesto prepočítavania nanovo.
+Tento chat je určený VÝHRADNE na tvorbu/úpravu RECEPTOV — nie na úpravu
+master promptu ani na úpravu dizajnu/funkcionality webstránky (index.html).
+Tie riešime v samostatných chatoch (master-prompt chat / web-dizajn chat)
+a odtiaľ sa zmeny nahrávajú do Project files.
 
 Pred receptom napíš vyplnený self-check blok (sekcia 5.6 master promptu),
 vrátane položkovej kontroly surovín (5.5a), a až potom samotný recept.
 
-Tento chat je určený na tvorbu/úpravu RECEPTOV, NIE na úpravu master
-promptu ani na úpravu dizajnu/funkcionality webstránky (index.html) — tie
-riešime v samostatných chatoch (master-prompt chat / web-dizajn chat) a
-odtiaľ sa zmeny nahrávajú do Project files.
+Použi lookup tabuľky (tabulka-nutricnych-interakcii.md,
+tabulka-cups-gramy-v1_2.md) namiesto prepočítavania nanovo.
 
-Od refaktoringu na recipes.json + index.html (dáta receptov oddelené od
-dizajnu) platí: ak chceš recept rovno pridať na stránku (nie len
-vygenerovať text), povedz mi to explicitne — na to potrebujem aktuálny
-recipes.json, ktorý buď je v Project files (over si dátum/verziu), alebo
-mi ho nahraj v tomto chate. index.html na toto NIE JE potrebný — ten
-obsahuje len dizajn/JS logiku, žiadne dáta receptov, takže ho na pridanie
-receptu netreba nahrávať ani upravovať. To je aj hlavný benefit refaktoringu:
-recept-chat ostáva krátky a lacný na tokeny, lebo pracuje len s malým
-recipes.json, nie s celým HTML súborom.
+Ak chceš recept rovno pridať na stránku (nie len vygenerovať text), povedz
+mi to explicitne — na to potrebujem aktuálny recipes.json, ktorý buď je
+v Project files (over si dátum/verziu), alebo mi ho nahraj v tomto chate.
+index.html na toto NIE JE potrebný — ten obsahuje len dizajn/JS logiku,
+žiadne dáta receptov.
+
+---
+
+Suroviny, ktoré mám: [DOPLŇ]
+Typ jedla: [nátierka / hlavné jedlo / polievka / eintopf / šalát / raňajky / príloha / iné]
+Počet porcií: [predvolene 4, ak iné uveď]
+Iné požiadavky/alergie: [DOPLŇ, ak relevantné]
 
 ---
 
