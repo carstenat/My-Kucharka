@@ -481,5 +481,125 @@
         ]
       }
     ]
+  },
+  {
+    "id": "natierka-kapusta-huby-miso",
+    "accent": "a",
+    "emoji": "🍄",
+    "category": "Nátierka",
+    "title": "Biela fazuľa, kapustovo-hubová nátierka s miso",
+    "why": "Fazuľa dáva krémovú základňu a bielkovinu, dusené šampiňóny s pórom pridajú umami hĺbku bez oleja, miso a sójovka doladia slanosť fermentovanou chuťou.",
+    "kcal": "135-150",
+    "protein": "9-10 g",
+    "fiber": "6-7 g",
+    "servings": "4 porcie",
+    "portionWeight": "~150 g",
+    "portionCup": "~½-⅔ cup",
+    "storage": "Chladnička 3-4 dni / mraznička 2-3 mesiace",
+    "per100g": {
+      "kcal": "92-100",
+      "protein": "6 g",
+      "fat": "1 g",
+      "carbs": "12-14 g",
+      "fiber": "4-5 g"
+    },
+    "per100gNote": "Hodnoty spočítané zo surovín, nie laboratórne merané — počítaj s odchýlkou približne ±10-15 %.",
+    "tags": [
+      "mrazená nátierka",
+      "hubová",
+      "miso",
+      "fazuľa"
+    ],
+    "ingredients": [
+      "2× 400 g bielej fazule, konzerva (scedená)",
+      "150 g šampiňónov, najemno nakrájaných",
+      "1 pór, len biela a svetlozelená časť, nadrobno (~80 g)",
+      "2 strúčiky cesnaku, nasekané",
+      "1 lyžica biele miso",
+      "1 lyžička sójovej omáčky",
+      "1 lyžička citrónovej šťavy",
+      "štipka čierneho korenia"
+    ],
+    "steps": [
+      "Pór dus na 2 lyžiciach vody 3 min do zmäknutia, pridaj cesnak (30 s).",
+      "Pridaj šampiňóny, dus na miernom ohni 6-7 min, kým nepustia a znova nevstrebú šťavu.",
+      "Fazuľu, dusenú zeleninu, miso, sójovku a citrónovú šťavu rozmixuj dohladka (alebo nahrubo, podľa chuti).",
+      "Dochuť korením — mrazom sa chuť mierne stlmí, kľudne výraznejšie.",
+      "Naplň formičky/nádobu, zamraz alebo daj do chladničky."
+    ],
+    "note": "Fazuľa z konzervy má fytáty čiastočne znížené oproti surovej vplyvom namáčania a tepelného spracovania — peer-reviewed štúdia meriaca priamo retenciu po varení (PMC7146319) udáva rádovo 14-50 % redukciu fytátu (retencia 49,9-85,9 %), súčasne však mierne klesá aj retencia železa (77,2-91,3 %) a zinku (41,2-84,0 %), takže čistý efekt na vstrebateľnosť minerálov nie je jednoduchý. Citrónová šťava aj cibuľovo-cesnaková báza (pór, cesnak) v tom istom jedle pomáhajú vstrebávaniu železa nezávislými mechanizmami.",
+    "variations": [
+      "Cícer namiesto bielej fazule — zrnitejšia textúra, orieškovejšia chuť.",
+      "Sušené huby (dusené vo vývare) namiesto čerstvých šampiňónov — koncentrovanejšia, hlbšia hubová chuť.",
+      "Tmavé miso namiesto bieleho — výraznejšia, slanšia, fermentovanejšia chuť."
+    ]
+  },
+  {
+    "id": "bbq-hliva-wrap",
+    "accent": "main",
+    "emoji": "🌯",
+    "category": "Hlavné jedlo",
+    "title": "BBQ pulled hliva kráľovská s čiernou fazuľou v kukuričnom wrape",
+    "why": "Hliva kráľovská roztrhaná na vlákna a opečená nasucho pod tlakom dostane mäsitú textúru za pár minút, domáca BBQ omáčka na báze paradajok a datlí ju zaleje bez kvapky oleja či cukru, čierna fazuľa doplní bielkovinu a chrumkavý coleslaw s tahini prinesie sviežosť aj vápnik.",
+    "kcal": "520-560",
+    "protein": "20-23 g",
+    "fiber": "21-24 g",
+    "servings": "4 porcie (8 wrapov)",
+    "portionWeight": "~500-540 g",
+    "storage": "BBQ hliva a fazuľa: chladnička 3-4 dni. Coleslaw najlepšie čerstvý (chladnička max. 1-2 dni). Wrapy skladaj tesne pred jedlom.",
+    "per100g": {
+      "kcal": "100-115",
+      "protein": "4-5 g",
+      "fat": "~2 g",
+      "carbs": "19-22 g",
+      "fiber": "4-5 g"
+    },
+    "per100gNote": "Hodnoty spočítané zo surovín, nie laboratórne merané — počítaj s odchýlkou približne ±10-15 %, plus neistota z odhadovaného úbytku vody pri opekaní hlivy.",
+    "tags": [
+      "wrap",
+      "BBQ",
+      "hliva",
+      "fazuľa",
+      "bez rúry"
+    ],
+    "ingredients": [
+      "500 g hlivy kráľovskej, natrhanej na tenké prúžky",
+      "400 g čiernej fazule, konzerva (scedená a prepláchnutá)",
+      "100 g cibule, nadrobno",
+      "4 strúčiky cesnaku (2 nastrúhané do omáčky, 2 nasekané do fazule)",
+      "60 g (4 lyžice) rajčinového pretlaku",
+      "50 g datľovej pasty spolu (35 g do BBQ omáčky, 15 g do dressingu)",
+      "40 ml jablčného octu spolu (20 ml do BBQ omáčky, 20 ml do dressingu)",
+      "15 g dijonskej horčice spolu (10 g do BBQ omáčky, 5 g do dressingu)",
+      "1 lyžička údenej papriky",
+      "20 g (2 lyžice) lahôdkového droždia",
+      "100 ml vody (do BBQ omáčky)",
+      "1 lyžička mletej rasce",
+      "šťava z 2 limetiek",
+      "300 g bielej kapusty, nastrúhanej najemno",
+      "150 g mrkvy, nastrúhanej najemno",
+      "40 g (2½ lyžice) tahini",
+      "30-45 ml vody (do dressingu)",
+      "8 kukuričných tortíl (á ~50 g, spolu 400 g)",
+      "soľ, čierne korenie podľa chuti",
+      "voliteľne: hrsť čerstvého koriandra alebo petržlenovej vňate"
+    ],
+    "steps": [
+      "Hlivu utri vlhkou utierkou (neumývaj pod vodou), natrhaj rukami alebo dvoma vidličkami po vláknach na tenké prúžky.",
+      "Rozohrej veľkú nepriľnavú panvicu na vysokom plameni bez oleja. Rozlož hlivu a hneď ju zhora silno pritlač druhou menšou panvicou alebo pokrievkou.",
+      "Opekaj pod tlakom 4 min, obráť, znova pritlač a opekaj ešte 3-4 min, kým väčšina vody nezmizne a okraje nezačnú chrumkavieť.",
+      "Medzitým rozmixuj rajčinový pretlak, 35 g datľovej pasty, 20 ml octu, 10 g horčice, 2 strúčiky cesnaku, údenú papriku, droždie, 100 ml vody, soľ a korenie dohladka.",
+      "Zniž plameň na stredný, zalej hlivu BBQ omáčkou, premiešaj a restuj 2-3 min, kým omáčka nezhustne. Odstav.",
+      "V druhej panvici dus cibuľu na 2 lyžiciach vody 2-3 min, pridaj zvyšné 2 strúčiky cesnaku a rascu (30 s). Vmiešaj fazuľu, prehrej 2-3 min, odstav a primiešaj limetkovú šťavu a soľ.",
+      "Kapustu a mrkvu nastrúhaj najemno, premiešaj s dressingom (tahini, zvyšný ocot, zvyšná horčica, zvyšná datľová pasta, voda na riedenie).",
+      "Tortilly krátko zohrej nasucho na panvici (10-15 s z každej strany).",
+      "Naplň tortilly fazuľou, BBQ hlivou a coleslaw, zroluj a podávaj hneď."
+    ],
+    "note": "Fytáty v konzervovanej čiernej fazuli sú oproti surovej znížené (retencia fytátu ~50-86 %, redukcia rádovo 14-50 %, podľa PMC7146319) — limetková šťava a cibuľovo-cesnaková báza pomáhajú vstrebávaniu železa a zinku napriek zvyšným fytátom. Tahini v dressingu dopĺňa vápnik, ktorý by inak v jedle chýbal (fazuľa a tortilly majú prebytok fosforu). Pri výbere kukuričných tortíl sleduj etiketu — najčistejšie majú len kukuričnú múku, vodu, vápno a soľ; niektoré komerčné obsahujú aj pridaný olej.",
+    "variations": [
+      "Hliva ustricová namiesto kráľovskej — jemnejšie vlákna, kratší čas opekania.",
+      "Cícer namiesto čiernej fazule — zrnitejšia textúra, jemnejšia chuť.",
+      "Celozrnná pšeničná tortilla namiesto kukuričnej — viac bielkovín a vlákniny, ale over etiketu na pridaný olej."
+    ]
   }
 ]
