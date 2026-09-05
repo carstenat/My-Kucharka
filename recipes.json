@@ -601,5 +601,57 @@
       "Cícer namiesto čiernej fazule — zrnitejšia textúra, jemnejšia chuť.",
       "Celozrnná pšeničná tortilla namiesto kukuričnej — viac bielkovín a vlákniny, ale over etiketu na pridaný olej."
     ]
+  },
+  {
+    "id": "natierka-cicer-kakao-pomaranc",
+    "accent": "a",
+    "emoji": "🍊",
+    "category": "Nátierka",
+    "title": "Cícerovo-kakaová nátierka s datľami a pomarančom",
+    "why": "Cícer dáva krémovú proteínovú základňu, datľová pasta prirodzenú sladkosť, kakao čokoládovú hĺbku, tahini krémovosť a vápnik, pomaranč rozžiari chuť a jeho vitamín C pomáha vstrebávaniu železa z cíceru.",
+    "kcal": "230-270",
+    "protein": "7-9 g",
+    "fiber": "8-10 g",
+    "servings": "4 porcie",
+    "portionWeight": "~120-125 g",
+    "portionCup": "~½ cup",
+    "storage": "Chladnička 4-5 dní / mraznička 2-3 mesiace",
+    "per100g": {
+      "kcal": "185-215",
+      "protein": "6-7 g",
+      "fat": "6-8 g",
+      "carbs": "30-36 g",
+      "fiber": "7-8 g"
+    },
+    "per100gNote": "Hodnoty spočítané zo surovín, nie laboratórne merané — počítaj s odchýlkou približne ±10-15 %, kakao a tahini majú výrazne premenlivý obsah tuku podľa značky, pomaranč do výpočtu nezarátaný (zanedbateľné množstvo).",
+    "tags": [
+      "mrazená nátierka",
+      "sladká",
+      "kakao",
+      "cícer"
+    ],
+    "ingredients": [
+      "1× 400 g cíceru, konzerva (scedený, ~240 g)",
+      "120 g datľovej pasty (čisté datle)",
+      "25 g (5 lyžíc) kakao, nesladené",
+      "45 g (3 lyžice) tahini",
+      "1 lyžička pomarančovej kôry (bio pomaranč)",
+      "2 lyžice pomarančovej šťavy (~30 ml)",
+      "½ lyžičky vanilkového prášku, nesladeného",
+      "¼ lyžičky soli",
+      "voda podľa potreby na riedenie (cca 2-4 lyžice)"
+    ],
+    "steps": [
+      "Cícer, datľovú pastu, kakao, tahini, pomarančovú kôru a šťavu, vanilku a soľ daj do mixéra.",
+      "Mixuj dohladka, podľa potreby prilievaj vodu (po lyžiciach), kým nedosiahneš krémovú konzistenciu.",
+      "Dochuť soľou alebo pomarančovou šťavou — chladom sa chuť mierne stlmí, pokojne urob výraznejšie.",
+      "Naplň nádobu alebo formičky, ulož do chladničky, alebo zamraz na dlhšie skladovanie."
+    ],
+    "note": "Cícer obsahuje fytáty, ktoré mierne znižujú vstrebávanie železa a zinku — pomarančová šťava (vitamín C) v recepte to čiastočne kompenzuje.",
+    "variations": [
+      "Mandľové maslo namiesto tahini — jemnejšia, orieškovejšia chuť, o niečo nižší vápnik.",
+      "Citrónová kôra/šťava namiesto pomarančovej — kyslejšia, menej sladká verzia.",
+      "Škorica alebo štipka čili navyše — teplejšia/korenistejšia chuť bez zmeny textúry."
+    ]
   }
 ]
