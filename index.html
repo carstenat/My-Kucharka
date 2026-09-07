@@ -217,6 +217,24 @@
     background:var(--ink); color:#fff; width:24px; height:24px; border-radius:50%;
     display:flex; align-items:center; justify-content:center; flex:none; margin-top:1px;
   }
+  .steps-group{display:flex; flex-direction:column; gap:13px;}
+  .steps-group + .steps-group{margin-top:22px;}
+  .phase-h{
+    font-family:'Space Mono', monospace; font-size:12px; letter-spacing:.06em; text-transform:uppercase;
+    font-weight:700; margin:0 0 2px; padding-bottom:8px; border-bottom:1px solid var(--line);
+    display:flex; align-items:center; gap:8px;
+  }
+  .detail[data-accent="main"] .phase-h{color:var(--c-main-deep);}
+  .detail[data-accent="a"] .phase-h{color:var(--c-a-deep);}
+  .detail[data-accent="b"] .phase-h{color:var(--c-b-deep);}
+  .detail[data-accent="c"] .phase-h{color:var(--c-c-deep);}
+  .detail[data-accent="g"] .phase-h{color:var(--c-g-deep);}
+  .detail[data-accent="h"] .phase-h{color:var(--c-h-deep);}
+  .phase-h .phase-num{
+    width:18px; height:18px; border-radius:50%; background:currentColor; opacity:.16;
+    display:inline-flex; align-items:center; justify-content:center; flex:none;
+  }
+  .phase-h .phase-num::after{content:""; }
   .note-box{
     margin-top:26px; background:var(--bg); border-radius:16px; padding:16px 20px;
     font-size:13.5px; color:var(--ink-soft); display:flex; gap:10px; line-height:1.55;
@@ -341,6 +359,23 @@ function cardHTML(r){
   </article>`;
 }
 
+function stepsHTML(steps){
+  // Starý formát: pole stringov -> jeden plochý <ol> ako doteraz.
+  if(!steps.length || typeof steps[0] === 'string'){
+    return `<ol class="steps">${steps.map(s=>`<li>${s}</li>`).join('')}</ol>`;
+  }
+  // Nový formát: pole objektov {phase, items}.
+  // Fázové podnadpisy sa zobrazia iba ak je fáz 2 alebo viac — pri jednej fáze
+  // by len zbytočne pridávali vizuálny šum bez informačnej hodnoty.
+  if(steps.length < 2){
+    return `<ol class="steps">${steps[0].items.map(s=>`<li>${s}</li>`).join('')}</ol>`;
+  }
+  return steps.map(group=>`<div class="steps-group">
+      <p class="phase-h"><span class="phase-num"></span>${group.phase}</p>
+      <ol class="steps" style="counter-reset:step;">${group.items.map(s=>`<li>${s}</li>`).join('')}</ol>
+    </div>`).join('');
+}
+
 function detailHTML(r){
   return `<p class="detail-eyebrow"></p>
     <h2>${r.title}</h2>
@@ -357,7 +392,7 @@ function detailHTML(r){
     <h3 class="section-h">Suroviny</h3>
     <ul class="ingredients">${r.ingredients.map(i=>`<li>${i}</li>`).join('')}</ul>
     <h3 class="section-h">Postup</h3>
-    <ol class="steps">${r.steps.map(s=>`<li>${s}</li>`).join('')}</ol>
+    ${stepsHTML(r.steps)}
     ${r.note ? `<div class="note-box"><span class="ico">💡</span><span><b>Poznámka:</b> ${r.note}</span></div>` : ''}
     ${r.variations && r.variations.length ? `<h3 class="section-h">Variácie</h3>
     <ul class="variations">${r.variations.map(v=>`<li><span class="ico">🔄</span><span>${v}</span></li>`).join('')}</ul>` : ''}
