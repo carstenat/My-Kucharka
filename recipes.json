@@ -108,6 +108,57 @@
     ]
   },
   {
+    "id": "natierka-kapusta-huby-miso",
+    "accent": "a",
+    "emoji": "🍄",
+    "category": "Nátierka",
+    "title": "Biela fazuľa, kapustovo-hubová nátierka s miso",
+    "why": "Fazuľa dáva krémovú základňu a bielkovinu, dusené šampiňóny s pórom pridajú umami hĺbku bez oleja, miso a sójovka doladia slanosť fermentovanou chuťou.",
+    "kcal": "135-150",
+    "protein": "9-10 g",
+    "fiber": "6-7 g",
+    "servings": "4 porcie",
+    "portionWeight": "~150 g",
+    "portionCup": "~½-⅔ cup",
+    "storage": "Chladnička 3-4 dni / mraznička 2-3 mesiace",
+    "per100g": {
+      "kcal": "92-100",
+      "protein": "6 g",
+      "fat": "1 g",
+      "carbs": "12-14 g",
+      "fiber": "4-5 g"
+    },
+    "per100gNote": "Hodnoty spočítané zo surovín, nie laboratórne merané — počítaj s odchýlkou približne ±10-15 %.",
+    "tags": [
+      "mrazená nátierka",
+      "huby",
+      "miso"
+    ],
+    "ingredients": [
+      "2× 400 g biela fazuľa, konzerva (scedená)",
+      "150 g šampiňóny, najemno nakrájané",
+      "1 pór, len biela a svetlozelená časť, nadrobno (~80 g)",
+      "2 strúčiky cesnaku, nasekané",
+      "1 Tbsp biele miso (~18 g)",
+      "1 tsp sójová omáčka (~5,3 g)",
+      "1 tsp citrónová šťava (~5 g)",
+      "štipka čierneho korenia"
+    ],
+    "steps": [
+      "Pór dus na 2 lyžiciach vody 3 min do zmäknutia, pridaj cesnak (30 s).",
+      "Pridaj šampiňóny, dus na miernom ohni 6-7 min, kým nepustia a znova nevstrebú šťavu.",
+      "Fazuľu, dusenú zeleninu, miso, sójovku a citrónovú šťavu rozmixuj dohladka (alebo nahrubo, podľa chuti).",
+      "Dochuť korením — mrazom sa chuť mierne stlmí, kľudne výraznejšie.",
+      "Naplň formičky/nádobu, zamraz alebo daj do chladničky."
+    ],
+    "note": "Fazuľa z konzervy má fytáty čiastočne znížené oproti surovej vplyvom namáčania a tepelného spracovania — retencia fytátu po varení rádovo 49,9-85,9 % (redukcia 14-50 %, PMC7146319), súčasne mierne klesá aj retencia železa (77,2-91,3 %) a zinku (41,2-84,0 %), takže čistý efekt na vstrebateľnosť minerálov nie je jednoduchý. Citrónová šťava aj cesnak/pórová báza v tom istom jedle pomáhajú vstrebávaniu železa nezávislými mechanizmami.",
+    "variations": [
+      "Cícer namiesto bielej fazule — zrnitejšia textúra, orieškovejšia chuť.",
+      "Sušené huby (dusené vo vývare) namiesto čerstvých šampiňónov — koncentrovanejšia, hlbšia hubová chuť.",
+      "Tmavé miso namiesto bieleho — výraznejšia, slanšia, fermentovanejšia chuť."
+    ]
+  },
+  {
     "id": "sosovica-miso",
     "accent": "a",
     "emoji": "🍜",
@@ -237,7 +288,7 @@
       "15 g (1 lyžica) mleté ľanové semienko",
       "20 g (2 lyžice) sezamové semienka mleté / tahini bez oleja",
       "60 g (3 lyžice) arašidové maslo (100 % orechy)",
-      "15 g (1½ lyžice) holé kakao, nesladené",
+      "15 g (1½ lyžice) kakao, nesladené",
       "½ lyžičky soľ",
       "½ lyžičky vanilkový prášok, nesladený"
     ],
@@ -525,6 +576,54 @@
           }
         ]
       }
+    ]
+  },
+  {
+    "id": "quinoa-krekry-cesnak-sezam",
+    "accent": "g",
+    "emoji": "🍘",
+    "category": "Iné",
+    "title": "Chrumkavé quinoa krekry s cesnakom a sezamom",
+    "why": "Uvarená quinoa sa vlastným škrobom na povrchu spojí do tenkého plátu bez múky či oleja — pomalým upečením vznikne jednoduchý, chrumkavý krekr na nátierky z tejto kuchárky.",
+    "kcal": "210-215",
+    "protein": "8 g",
+    "fiber": "4 g",
+    "servings": "~20 krekrov",
+    "storage": "Vzduchotesná nádoba, izbová teplota. Chrumkavosť je najlepšia v deň prípravy.",
+    "portionWeight": "~50-55 g (odhad, neoverené vážením)",
+    "portionCup": "5 krekrov",
+    "per100g": {
+      "kcal": "405",
+      "protein": "15-16 g",
+      "fat": "10 g",
+      "carbs": "64 g",
+      "fiber": "8 g"
+    },
+    "per100gNote": "Závisí od odhadovanej hmotnosti hotových krekrov po upečení (200-210 g z celej dávky) — NEOVERENÉ reálnym vážením, len modelom obsahu vody v surovej/varenej quinoi. Yield faktor quinoy (~3,0-3,1×) je tiež odvodený odhad z kalorickej hustoty, nie priame meranie (viď tabulka-cups-gramy-v1_4.md). Odchýlka môže presiahnuť zvyčajných ±10-15 %, kým sa dávka po upečení neodváži.",
+    "tags": ["krekry", "quinoa", "bez lepku", "bez oleja", "desiata"],
+    "ingredients": [
+      "200 g suchá quinoa (biela), dôkladne prepláchnutá",
+      "550 ml voda",
+      "18 g (2 lyžice) sezamové semienka",
+      "3 g (1 lyžička) sušený cesnak (cesnakový prášok)",
+      "3 g (½ lyžičky) soľ (alebo podľa chuti)"
+    ],
+    "steps": [
+      "Quinou dôkladne prepláchni pod studenou tečúcou vodou 1-2 min, kým voda nie je číra — odstránia sa horké saponíny.",
+      "Zalej vodou, priveď do varu, stíš plameň, prikry a var 12-15 min, kým sa voda vstrebe a je vidieť malé chvostíky na zrnkách.",
+      "Odstav, nechaj 5 min prikryté odstáť, potom vidličkou jemne prevzdušni.",
+      "Vmiešaj sezamové semienka, cesnakový prášok a soľ.",
+      "Rozotri na plech vystlaný papierom na pečenie do tenkej, rovnomernej vrstvy (cca 3-4 mm).",
+      "Narež (nie prerež) vrstvu na štvorce cca 5×5 cm — po upečení sa pozdĺž rezov ľahko rozlámu.",
+      "Peč pri 150 °C (bežná rúra) alebo 135 °C (teplovzdušná/turbo) 30-35 min, potom opatrne obráť aj s papierom a peč ďalších 20-25 min, kým krekry nie sú úplne suché a tuhé po celej hrúbke. Sleduj najmä tenšie okraje, vysychajú rýchlejšie.",
+      "Voliteľne, až keď sú už suché: 3-5 min pri 170-180 °C pre výraznejšiu zlatistú farbu.",
+      "Nechaj úplne vychladnúť na mriežke, potom rozlám pozdĺž rezov."
+    ],
+    "note": "Prepláchnutie a var mierne znižujú obsah fytátov v quinoi — pri malej desiatovej porcii to nie je kľúčový nutričný faktor. Chrumkavosť rýchlo klesá pri kontakte so vzdušnou vlhkosťou (podľa všeobecne známeho odporúčania Dr. Gregera, NutritionFacts.org: menšie dávky, alebo zjesť v prvý deň). Teplota/čas pečenia (150 °C/135 °C) doplnené z nezávislých kuchárskych zdrojov.",
+    "variations": [
+      "Proso namiesto quinoy — jemnejšia textúra, mierne sladšia chuť, o niečo nižšia bielkovina.",
+      "Ražné krúpy namiesto quinoy — žuvavejšia, celozrnnejšia chuť; obsahuje lepok, na rozdiel od quinoy/prosa.",
+      "Uvarená pohanka namiesto quinoy — orieškovejšia, zemitejšia chuť, o niečo vyššia vláknina."
     ]
   }
 ]
